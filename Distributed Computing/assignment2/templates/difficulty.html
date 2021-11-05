@@ -1,0 +1,65 @@
+<!doctype html>
+
+<head>
+    <style>
+        body {
+            width: 90vw;
+            margin: auto;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <title>Difficulty Meter</title>
+    <h2>Difficulty score for Question <a target="new" href="https://stackoverflow.com/q/{{ question_id }}">{{
+            question_id }}</a></h1>
+        <p></p>
+        <h1>{{ details.score }}
+        </h1>
+        <table border="1">
+            <thead>
+                <th>Answers</th>
+                <th>Upvotes</th>
+                <th>Downvotes</th>
+            </thead>
+            <tbody>
+                <th>{{ question_data.3 }} {% if question_data.5 == 1 %} (Accepted Answer) {% endif %} </th>
+                <th>{{ question_data.0 }}</th>
+                <th>{{ question_data.1 }}</th>
+            </tbody>
+        </table>
+
+        <div style="border: solid 2px black;">
+            {{ question_body | safe }}
+        </div>
+
+        <a href="/">Home</a>
+        <hr>
+        <p></p>
+        <h2>Other Questions</h2>
+        <table border="1">
+            <thead>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Question Preview</th>
+                </th>
+            </thead>
+            <tbody>
+                {% for question in questions %}
+                <tr>
+                    <td><a target="new" href="https://stackoverflow.com/q/{{ question.1 }}">{{ question.1 }}</a>
+                        <br>
+                        <a target="new" href="/difficulty?question-id={{ question.1 }}">Get Difficulty</a>
+                    </td>
+                    <td>{{ question.0 }}</td>
+                    <td>{{ question.7 | safe }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</body>
+
+</html>

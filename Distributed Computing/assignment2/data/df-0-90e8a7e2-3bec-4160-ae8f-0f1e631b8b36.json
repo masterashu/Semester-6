@@ -1,0 +1,927 @@
+[
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 1,
+                    "user_id": 15498060
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 66914371,
+                "question_id": 66914344,
+                "body": "<p>I solved it by myself. when I add await keyword in front of HTTP.get the error is gone.</p>\n<p>like this\nhttp.Response response = await http.get(url);</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 242,
+                    "user_id": 11791453
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 66914376,
+                "question_id": 66914344,
+                "body": "<p>I have edited your code so please you can try as well as this code.</p>\n<pre><code>  void gateData() async {\n    var url =\n        Uri.parse('http://worldtimeapi.org/api/timezone/Africa/Addis_Ababa');\n  http.Response response =await http.get(url);\n\n  }\n</code></pre>\n<p>You need to use <code>async</code> and <code>await</code> future type.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 91,
+                    "user_id": 15117215
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 66914391,
+                "question_id": 66914344,
+                "body": "<p>Try This</p>\n<pre><code> void gateData() async {\n        var url =\n            Uri.parse('http://worldtimeapi.org/api/timezone/Africa/Addis_Ababa');\n\n//here is The Error occur at http.get(url), \n\n        http.Response response = await http.get(url);\n\n      }\n\n</code></pre>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 1,
+            "user_id": 15498060
+        },
+        "is_answered": false,
+        "down_vote_count": 1,
+        "up_vote_count": 0,
+        "answer_count": 3,
+        "last_activity_date": 1617337177,
+        "question_id": 66914344,
+        "title": "A value of type &#39;Future&lt;Response&gt;&#39; can&#39;t be assigned to a variable of type &#39;Response&#39;",
+        "body": "<p>I get this error: <code>A value of type 'Future&lt;Response&gt;' can't be assigned to a variable of type 'Response'.  Try changing the type of the variable, or casting the right-hand type to 'Response'.</code></p>\n<pre class=\"lang-dart prettyprint-override\"><code>    import 'package:flutter/material.dart';\n    import 'package:http/http.dart' as http;\n    \n    class loadding extends StatefulWidget {\n      @override\n      _loaddingState createState() =&gt; _loaddingState();\n    }\n    \n    class _loaddingState extends State&lt;loadding&gt; {\n      void gateData() async {\n        var url =\n            Uri.parse('http://worldtimeapi.org/api/timezone/Africa/Addis_Ababa');\n\n//here is The Error occur at http.get(url), \n\n        http.Response response = http.get(url);\n\n      }\n    \n      @override\n      Widget build(BuildContext context) {\n        return Scaffold();\n      }\n    }\n</code></pre>\n"
+    },
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 39971,
+                    "user_id": 504554,
+                    "accept_rate": 100
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 0,
+                "is_accepted": true,
+                "answer_id": 66766208,
+                "question_id": 66760070,
+                "body": "<p>As @Brits pointed out in the comments, the code will never pass the <code>client.loop_forever()</code> call.</p>\n<p>This call will block for the life of the MQTT client.</p>\n<p>How you move forward will very much depend on what you need to achieve. If you just want to receive a single message then there is a <a href=\"https://www.eclipse.org/paho/index.php?page=clients/python/docs/index.php#id3\" rel=\"nofollow noreferrer\">helper</a> wrapper that will do that</p>\n<pre><code>import paho.mqtt.subscribe as subscribe\n\nmsg = subscribe.simple(&quot;paho/test/simple&quot;, hostname=&quot;mqtt.eclipse.org&quot;)\nprint(&quot;%s %s&quot; % (msg.topic, msg.payload))\n</code></pre>\n<p>If you need to do more then you probably need to look at either swapping the <code>client.loop_forever()</code> for <code>client.loop_start()</code> which will start a background thread to run the client network loop. Even with this change your code will still need a lot more work as the <code>message</code> global will not be updated until a message arrives which could be a long time, so trying to print it immediately will probably not give what you expect.</p>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 3,
+            "user_id": 3474894
+        },
+        "is_answered": true,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "accepted_answer_id": 66766208,
+        "answer_count": 1,
+        "last_activity_date": 1616513102,
+        "question_id": 66760070,
+        "title": "Python Paho MQTT Global Variable not Storing Message",
+        "body": "<p>Using paho mqtt, declaring global variable in the function, but when wanted to call the variable outside the function it doesn't work. (Last line print function outside the on_message function). It has message posting every 1sec, but when executing this, no message showing.</p>\n<pre><code>import paho.mqtt.client as mqtt\nfrom datetime import datetime\n\nmessage = ''\ndef on_connect (client, userdata, flags, rc):  \n    print('Connected successful with attempt: {}'.format(str(rc)))\n    client.subscribe('imax123')\n\ndef on_message (client, userdata, msg): \n    global message\n    message = str(msg.payload)\n\nclient = mqtt.Client('IMAXCLIENT') \nclient.on_connect = on_connect \nclient.on_message = on_message \nclient.connect('mqtt.eclipseprojects.io') \nclient.loop_forever()\n\nprint(message)\n</code></pre>\n"
+    },
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 1095973,
+                    "user_id": 1144035
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": true,
+                "answer_id": 66762581,
+                "question_id": 66760088,
+                "body": "<p>I am assuming you want something like this:</p>\n<pre><code>select cps.community_area_number, cps.community_area_name \nfrom CHICAGO_PUBLIC_SCHOOLS cps\nwhere cps.community_area_number = (select ccd.community_area_number \n                                   from CHICAGO_CRIME_DATA ccd\n                                   order by ccd.num_crimes desc \n                                   limit 1\n                                  ) ccd;\n</code></pre>\n<p>I have no idea how the number of crimes is determined, so I made up a column.</p>\n<p>Note that if there are ties, this returns an arbitrary area.</p>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 21,
+            "user_id": 15150328
+        },
+        "is_answered": true,
+        "down_vote_count": 2,
+        "up_vote_count": 0,
+        "accepted_answer_id": 66762581,
+        "answer_count": 1,
+        "last_activity_date": 1616500245,
+        "question_id": 66760088,
+        "title": "SQL Sub_query and joint",
+        "body": "<p><strong>Use a sub-query to determine the Community Area Name with most number of crimes?</strong></p>\n<p>i have been trying to solve this Question for few days and I'm having a complete block</p>\n<p>would any of you please help me!!</p>\n<pre class=\"lang-sql prettyprint-override\"><code>select community_area_name, community_area_number \nfrom CHICAGO_PUBLIC_SCHOOLS \nwhere community_area_number in (select community_area_number \n                                from CHICAGO_CRIME_DATA \n                                where community_area_number = '25');\n</code></pre>\n<pre class=\"lang-sql prettyprint-override\"><code>select community_area_number, community_area_name \nfrom CHICAGO_PUBLIC_SCHOOLS \nwhere community_area_number in (select community_area_number \n                                from CHICAGO_CRIME_DATA);\n</code></pre>\n"
+    },
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 47,
+                    "user_id": 7959482
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 66760938,
+                "question_id": 66760214,
+                "body": "<p>you can make a +and- icons like this in the picture\n<a href=\"https://i.stack.imgur.com/yl2ty.png\" rel=\"nofollow noreferrer\"><img src=\"https://i.stack.imgur.com/yl2ty.png\" alt=\"enter image description here\" /></a></p>\n<p>so whenever the admin want an extra field he just needs to press + sign</p>\n<p>in my opinion, this is the best choice</p>\n<p>so to do this you just need to append HTML child whenever he presses the + and removes the last child when he presses the -</p>\n<p>example of adding in js :</p>\n<pre><code>$('#containerid').append('&lt;input name=&quot;test&quot;&gt;');\n</code></pre>\n<p>example of removing element in js :</p>\n<pre><code>$('#containerid').children().last().remove();\n</code></pre>\n<p>and example of handling all this values in django in view func:</p>\n<pre><code>names = request.POST.getlist('name')\n</code></pre>\n<p>now you have a list of data you can do whatever you need with this ,</p>\n<p>if you want to enter all these names in database you do this :</p>\n<pre><code>inc = len(request.POST.getlist('name'))\ni = 0\nwhile i != inc:\n     var = Vairs(name=names[i])\n     var.save()\n</code></pre>\n<p>this is the basic idea, if you need anything else just comment below</p>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 47,
+            "user_id": 8584143
+        },
+        "is_answered": false,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "answer_count": 1,
+        "last_activity_date": 1616494361,
+        "question_id": 66760214,
+        "title": "How can I add unlimited field in models on admin page",
+        "body": "<p>In Django project that I made I just made a product model that user customize it with how much field want by what kind of product wants add, so I don't know what kind of product admin wants add to make field for it, so how can solve this problem ?</p>\n"
+    },
+    {
+        "owner": {
+            "reputation": 43,
+            "user_id": 15059877
+        },
+        "is_answered": false,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "answer_count": 0,
+        "last_activity_date": 1616494061,
+        "question_id": 66760150,
+        "title": "How to solve &quot;cannot identify image file&quot; in Keras",
+        "body": "<p>I am trying to input my train images with float32 data type and PNG format using <code>from keras.preprocessing.image import ImageDataGenerator</code>, but I receive error <code>UnidentifiedImageError: cannot identify image file &lt;_io.BytesIO object at 0x000001E5AD9BEB48&gt;</code>.</p>\n<p>This is the code I am using:</p>\n<pre><code>batch_size = 16\nfrom keras.preprocessing.image import ImageDataGenerator\ntrain_datagen = ImageDataGenerator()\n\n\nimg_train_generator = train_datagen.flow_from_directory(\n                &quot;train/image/&quot;,\n                target_size=(16,16),\n                batch_size=batch_size,\n                class_mode= None,\n                color_mode='rgba',\n                shuffle=False)\n                \n    \nlabel_train_generator = train_datagen.flow_from_directory(\n                &quot;train/label/&quot;,\n                target_size=(16,16),\n                batch_size=batch_size,\n                class_mode=None,\n                shuffle=False,\n                color_mode='grayscale')\n\ntrain_generator = zip(img_train_generator, label_train_generator)\n</code></pre>\n<p>result:</p>\n<pre><code>Found 1524 images belonging to 1 classes.\nFound 1524 images belonging to 1 classes.\n</code></pre>\n<p>The error log appears after running the following code:</p>\n<pre><code>X_train, y_train=next(train_generator)\nX_train.shape, y_train.shape\n</code></pre>\n<p>Can anyone help to solve this error?</p>\n<p>-----error log:</p>\n<hr />\n<pre><code>UnidentifiedImageError                    Traceback (most recent call last)\n&lt;ipython-input-10-029022e123bf&gt; in &lt;module&gt;\n     25 train_generator = zip(img_train_generator, label_train_generator)\n     26 \n---&gt; 27 X_train, y_train=next(train_generator)\n     28 X_train.shape, y_train.shape\n\n~\\.conda\\envs\\myenv-36\\lib\\site-packages\\keras_preprocessing\\image\\iterator.py in __next__(self, *args, **kwargs)\n    102 \n    103     def __next__(self, *args, **kwargs):\n--&gt; 104         return self.next(*args, **kwargs)\n    105 \n    106     def next(self):\n\n~\\.conda\\envs\\myenv-36\\lib\\site-packages\\keras_preprocessing\\image\\iterator.py in next(self)\n    114         # The transformation of images is not under thread lock\n    115         # so it can be done in parallel\n--&gt; 116         return self._get_batches_of_transformed_samples(index_array)\n    117 \n    118     def _get_batches_of_transformed_samples(self, index_array):\n\n~\\.conda\\envs\\myenv-36\\lib\\site-packages\\keras_preprocessing\\image\\iterator.py in _get_batches_of_transformed_samples(self, index_array)\n    228                            color_mode=self.color_mode,\n    229                            target_size=self.target_size,\n--&gt; 230                            interpolation=self.interpolation)\n    231             x = img_to_array(img, data_format=self.data_format)\n    232             # Pillow images should be closed after `load_img`,\n\n~\\.conda\\envs\\myenv-36\\lib\\site-packages\\keras_preprocessing\\image\\utils.py in load_img(path, grayscale, color_mode, target_size, interpolation)\n    112                           'The use of `load_img` requires PIL.')\n    113     with open(path, 'rb') as f:\n--&gt; 114         img = pil_image.open(io.BytesIO(f.read()))\n    115         if color_mode == 'grayscale':\n    116             # if image is not already an 8-bit, 16-bit or 32-bit grayscale image\n\n~\\.conda\\envs\\myenv-36\\lib\\site-packages\\PIL\\Image.py in open(fp, mode, formats)\n   2957         warnings.warn(message)\n   2958     raise UnidentifiedImageError(\n-&gt; 2959         &quot;cannot identify image file %r&quot; % (filename if filename else fp)\n   2960     )\n   2961 \n</code></pre>\n"
+    },
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 457,
+                    "user_id": 13632128
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 66760427,
+                "question_id": 66760212,
+                "body": "<p>You first need to remove the /. Just do <code>from ..file import get_func</code></p>\n<p>Secondly, to import from file.py the package directory <code>parentDir</code> must be accessible from the Python module search path (sys.path)</p>\n<p>So you need to add it to <code>sys.path</code> using <code>sys.path.append(path_of_parentDir)</code></p>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 255,
+            "user_id": 10617728
+        },
+        "is_answered": false,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "answer_count": 1,
+        "last_activity_date": 1616492292,
+        "question_id": 66760212,
+        "title": "How to perform Relative imports using Python",
+        "body": "<p>My dir looks like this</p>\n<pre><code>parentDir\n    |__ app\n    |    |__ main.py\n    |\n    |__ file.py\n</code></pre>\n<p>I'm in <strong>main.py</strong> and want to import a func in module <strong>file.py</strong>.\nI have tried to do <code>from ../file import get_func</code> but I get an error</p>\n<blockquote>\n<p>SyntaxError: invalid syntax</p>\n</blockquote>\n<p>My way does not work, any idea where I'm going wrong?</p>\n<p><em>I'm using python 3.8</em></p>\n"
+    },
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 612396,
+                    "user_id": 2901002,
+                    "accept_rate": 97
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": true,
+                "answer_id": 66760241,
+                "question_id": 66760221,
+                "body": "<p>Use <a href=\"http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.count.html\" rel=\"nofollow noreferrer\"><code>DataFrame.count</code></a> for get number of rows with exclude missing values and test for greater like <code>1</code> in <a href=\"http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.gt.html\" rel=\"nofollow noreferrer\"><code>Series.gt</code></a> and filter by <a href=\"http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#boolean-indexing\" rel=\"nofollow noreferrer\"><code>boolean indexing</code></a>:</p>\n<pre><code>df1 = df[df.count(axis=1).gt(1)]\nprint (df1)\n                                  1  10  11  12    13\nChromosome                                           \n15q13.3 microdeletion syndrome  4.0 NaN NaN NaN  10.0\n</code></pre>\n<p>Or you can test not missing values and count <code>True</code>s by <code>sum</code>:</p>\n<pre><code>df1 = df[df.notna().sum(axis=1).gt(1)]\n</code></pre>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 95,
+            "user_id": 4913254
+        },
+        "is_answered": true,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "accepted_answer_id": 66760241,
+        "answer_count": 1,
+        "last_activity_date": 1616490901,
+        "question_id": 66760221,
+        "title": "Get the row that have more than one value per column",
+        "body": "<p>I have a dataframe like this</p>\n<pre><code>\nChromosome                                             1  10   11    12  13   ...\nSyndromes                                                                     \n12p13.33 Microdeletion Syndrome;                     NaN NaN  NaN  11.0 NaN   ...\n12q14 microdeletion syndrome;                        NaN NaN  NaN   7.0 NaN   ...\n15q13.3 microdeletion syndrome;                      4.0 NaN  NaN   NaN 10.0   ...\n\n</code></pre>\n<p>Each row contains only one value, rest of the columns are null values but I think that some of the rows could have more than one value like the last one I have create in the previous example.</p>\n<p>How can I check that and get the rows with more than one value</p>\n"
+    },
+    {
+        "owner": {
+            "reputation": 1,
+            "user_id": 15459174
+        },
+        "is_answered": false,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "answer_count": 0,
+        "last_activity_date": 1616490450,
+        "question_id": 66760131,
+        "title": "Trigger event when receiving a brave windows notification",
+        "body": "<p>I want to build a program where everytime when I receive a brave (the browser) notification from windows, I want to open that notification and after that a new tab will open which I want to automatically close. So my question is: How do I reach this windows notification? How do I tell python that python should open this brave notification when it pops up? I dont know how to reach the event... Thanks for your help!</p>\n"
+    },
+    {
+        "owner": {
+            "reputation": 59,
+            "user_id": 2791285
+        },
+        "is_answered": false,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "answer_count": 0,
+        "last_activity_date": 1616490444,
+        "question_id": 66760128,
+        "title": "Generate 3d cloud points using multiple 2d images",
+        "body": "<p>I want to generate the 3d Points Cloud using multiple 2d images. These images are clicked at\nthe same time with different camera angles. Here is an example of 2d images.</p>\n<p>shorturl.at/bijwT</p>\n<p>Problem I am facing is determining the similar pixel in these multiple images. How should I detect\nthe similar pixel in different images?\nThanks in advance</p>\n"
+    },
+    {
+        "owner": {
+            "reputation": 55,
+            "user_id": 2976461
+        },
+        "is_answered": false,
+        "down_vote_count": 0,
+        "up_vote_count": 0,
+        "answer_count": 0,
+        "last_activity_date": 1616490065,
+        "question_id": 66760041,
+        "title": "PyQt5 - Wait until data is written to QSharedMemory",
+        "body": "<p>I have 2 separate processes using QSharedMemory for IPC. One of them should have a thread waiting for the other process to write to this shared memory segment and once that happens perform an action (all of this without blocking the main thread).</p>\n<p>The file consumer.py:</p>\n<pre class=\"lang-py prettyprint-override\"><code>import time\nimport threading\nfrom PyQt5.QtCore import QSystemSemaphore, QSharedMemory\n\nsem = QSystemSemaphore(&quot;test-sem&quot;)\nshmem = QSharedMemory(&quot;test-shmem&quot;)\n\nshmem.create(64, mode=QSharedMemory.ReadWrite)\n\n\ndef wait_for_release():\n    while True:\n        sem.acquire()\n        shmem.lock()\n        data = shmem.data()\n        data_str = str(data, encoding=&quot;utf-8&quot;)\n        data_str = data_str.rstrip(&quot;\\x00&quot;)\n        shmem.unlock()\n\n        print(f&quot;Hello {data_str}!&quot;)\n\n\nthreading.Thread(target=wait_for_release).start()\n\n# This should be running while the other thread waits for the semaphore to be released\nwhile True:\n    print(&quot;Waiting...&quot;)\n    time.sleep(1)\n</code></pre>\n<p>producer.py</p>\n<pre class=\"lang-py prettyprint-override\"><code>from PyQt5.QtCore import QSystemSemaphore, QSharedMemory, QByteArray\n\nsem = QSystemSemaphore(&quot;test-sem&quot;)\nshmem = QSharedMemory(&quot;test-shmem&quot;)\n\nif shmem.attach(QSharedMemory.ReadWrite):\n\n    str_bytes = QByteArray(&quot;World&quot;.encode(&quot;ascii&quot;))\n\n    shmem.lock()\n    shmem.data()[:str_bytes.size()] = str_bytes\n\n    # Release so the other process can print &quot;Hello World!&quot;\n    sem.release()\n\n</code></pre>\n<p>The thing I expected to happen when I start running <em>consumer.py</em> is the main thread printing &quot;Waiting...&quot; every second and once i run <em>producer.py</em> printing &quot;Hello World!&quot; the main thread blocks when the semaphore (which is running in a separate thread) blocks. Does QSystemSemaphore block the whole process? Is there another alternative?</p>\n"
+    },
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 96498,
+                    "user_id": 29,
+                    "accept_rate": 83
+                },
+                "down_vote_count": 4,
+                "up_vote_count": 79,
+                "is_accepted": false,
+                "answer_id": 18085,
+                "question_id": 18082,
+                "body": "<p>This way seems to work well:</p>\n\n<pre><code>function IsNumeric(input){\n    var RE = /^-{0,1}\\d*\\.{0,1}\\d+$/;\n    return (RE.test(input));\n}\n</code></pre>\n\n<p>In one line:</p>\n\n<pre><code>const IsNumeric = (num) =&gt; /^-{0,1}\\d*\\.{0,1}\\d+$/.test(num);\n</code></pre>\n\n<p>And to test it:</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>const IsNumeric = (num) =&gt; /^-{0,1}\\d*\\.{0,1}\\d+$/.test(num);\r\n    \r\n    function TestIsNumeric(){\r\n        var results = ''\r\n        results += (IsNumeric('-1')?\"Pass\":\"Fail\") + \": IsNumeric('-1') =&gt; true\\n\";\r\n        results += (IsNumeric('-1.5')?\"Pass\":\"Fail\") + \": IsNumeric('-1.5') =&gt; true\\n\";\r\n        results += (IsNumeric('0')?\"Pass\":\"Fail\") + \": IsNumeric('0') =&gt; true\\n\";\r\n        results += (IsNumeric('0.42')?\"Pass\":\"Fail\") + \": IsNumeric('0.42') =&gt; true\\n\";\r\n        results += (IsNumeric('.42')?\"Pass\":\"Fail\") + \": IsNumeric('.42') =&gt; true\\n\";\r\n        results += (!IsNumeric('99,999')?\"Pass\":\"Fail\") + \": IsNumeric('99,999') =&gt; false\\n\";\r\n        results += (!IsNumeric('0x89f')?\"Pass\":\"Fail\") + \": IsNumeric('0x89f') =&gt; false\\n\";\r\n        results += (!IsNumeric('#abcdef')?\"Pass\":\"Fail\") + \": IsNumeric('#abcdef') =&gt; false\\n\";\r\n        results += (!IsNumeric('1.2.3')?\"Pass\":\"Fail\") + \": IsNumeric('1.2.3') =&gt; false\\n\";\r\n        results += (!IsNumeric('')?\"Pass\":\"Fail\") + \": IsNumeric('') =&gt; false\\n\";\r\n        results += (!IsNumeric('blah')?\"Pass\":\"Fail\") + \": IsNumeric('blah') =&gt; false\\n\";\r\n        \r\n        return results;\r\n    }\r\n\r\nconsole.log(TestIsNumeric());</code></pre>\r\n<pre class=\"snippet-code-css lang-css prettyprint-override\"><code>.as-console-wrapper { max-height: 100% !important; top: 0; }</code></pre>\r\n</div>\r\n</div>\r\n</p>\n\n<p>I borrowed that regex from <a href=\"http://www.codetoad.com/javascript/isnumeric.asp\" rel=\"noreferrer\">http://www.codetoad.com/javascript/isnumeric.asp</a>. Explanation:</p>\n\n<pre><code>/^ match beginning of string\n-{0,1} optional negative sign\n\\d* optional digits\n\\.{0,1} optional decimal point\n\\d+ at least one digit\n$/ match end of string\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 3281,
+                    "user_id": 2120
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 5,
+                "is_accepted": false,
+                "answer_id": 18148,
+                "question_id": 18082,
+                "body": "<p>A couple of tests to add:</p>\n\n<pre><code>IsNumeric('01.05') =&gt; false\nIsNumeric('1.') =&gt; false\nIsNumeric('.') =&gt; false\n</code></pre>\n\n<p>I came up with this:</p>\n\n<pre><code>function IsNumeric(input) {\n    return /^-?(0|[1-9]\\d*|(?=\\.))(\\.\\d+)?$/.test(input);\n}\n</code></pre>\n\n<p>The solution covers:</p>\n\n<ul>\n<li>An optional negative sign at the beginning</li>\n<li>A single zero, or one or more digits not starting with 0, or nothing so long as a period follows</li>\n<li>A period that is followed by 1 or more numbers</li>\n</ul>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 53914,
+                    "user_id": 1585,
+                    "accept_rate": 73
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 7,
+                "is_accepted": false,
+                "answer_id": 18249,
+                "question_id": 18082,
+                "body": "<p>I'd like to add the following:</p>\n\n<pre>\n<code>1. IsNumeric('0x89f') => true\n2. IsNumeric('075') => true</code>\n</pre>\n\n<p>Positive hex numbers start with <code>0x</code> and negative hex numbers start with <code>-0x</code>.\nPositive oct numbers start with <code>0</code> and negative oct numbers start with <code>-0</code>.\nThis one takes most of what has already been mentioned into consideration, but includes hex and octal numbers, negative scientific, Infinity and has removed decimal scientific (<code>4e3.2</code> is not valid).</p>\n\n<pre><code>function IsNumeric(input){\n  var RE = /^-?(0|INF|(0[1-7][0-7]*)|(0x[0-9a-fA-F]+)|((0|[1-9][0-9]*|(?=[\\.,]))([\\.,][0-9]+)?([eE]-?\\d+)?))$/;\n  return (RE.test(input));\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 2878,
+                    "user_id": 1328
+                },
+                "down_vote_count": 5,
+                "up_vote_count": 23,
+                "is_accepted": false,
+                "answer_id": 19176,
+                "question_id": 18082,
+                "body": "<p>Use the function <code>isNaN</code>. I believe if you test for <code>!isNaN(yourstringhere)</code> it works fine for any of these situations.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 33102,
+                    "user_id": 1414,
+                    "accept_rate": 88
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 35,
+                "is_accepted": false,
+                "answer_id": 19317,
+                "question_id": 18082,
+                "body": "<p>Yeah, the built-in <a href=\"https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/isNaN\" rel=\"noreferrer\"><code>isNaN(object)</code></a> will be much faster than any regex parsing, because it's built-in and compiled, instead of interpreted on the fly.</p>\n\n<p>Although the results are somewhat different to what you're looking for (<a href=\"http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_isnan\" rel=\"noreferrer\">try it</a>):</p>\n\n<pre><code>                                              // IS NUMERIC\ndocument.write(!isNaN('-1') + \"&lt;br /&gt;\");      // true\ndocument.write(!isNaN('-1.5') + \"&lt;br /&gt;\");    // true\ndocument.write(!isNaN('0') + \"&lt;br /&gt;\");       // true\ndocument.write(!isNaN('0.42') + \"&lt;br /&gt;\");    // true\ndocument.write(!isNaN('.42') + \"&lt;br /&gt;\");     // true\ndocument.write(!isNaN('99,999') + \"&lt;br /&gt;\");  // false\ndocument.write(!isNaN('0x89f') + \"&lt;br /&gt;\");   // true\ndocument.write(!isNaN('#abcdef') + \"&lt;br /&gt;\"); // false\ndocument.write(!isNaN('1.2.3') + \"&lt;br /&gt;\");   // false\ndocument.write(!isNaN('') + \"&lt;br /&gt;\");        // true\ndocument.write(!isNaN('blah') + \"&lt;br /&gt;\");    // false\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 4849,
+                    "user_id": 2080
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 14,
+                "is_accepted": false,
+                "answer_id": 22604,
+                "question_id": 18082,
+                "body": "<p>It can be done without RegExp as </p>\n\n<pre><code>function IsNumeric(data){\n    return parseFloat(data)==data;\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 359281,
+                    "user_id": 3043,
+                    "accept_rate": 70
+                },
+                "down_vote_count": 36,
+                "up_vote_count": 380,
+                "is_accepted": false,
+                "answer_id": 174921,
+                "question_id": 18082,
+                "body": "<p>Arrrgh!  Don't listen to the regular expression answers.  RegEx is icky for this, and I'm not talking just performance.  It's so easy to make subtle, impossible to spot mistakes with your regular expression.  </p>\n\n<p>If you can't use <code>isNaN()</code>, this should work much better:</p>\n\n<pre><code>function IsNumeric(input)\n{\n    return (input - 0) == input &amp;&amp; (''+input).trim().length &gt; 0;\n}\n</code></pre>\n\n<p>Here's how it works:</p>\n\n<p>The <code>(input - 0)</code> expression forces JavaScript to do type coercion on your input value; it must first be interpreted as a number for the subtraction operation.  If that conversion to a number fails, the expression will result in <code>NaN</code>.  This <em>numeric</em> result is then compared to the original value you passed in.  Since the left hand side is now numeric, type coercion is again used.  Now that the input from both sides was coerced to the same type from the same original value, you would think they should always be the same (always true). However, there's a special rule that says <code>NaN</code> is never equal to <code>NaN</code>, and so a value that can't be converted to a number (and only values that cannot be converted to numbers) will result in false. </p>\n\n<p>The check on the length is for a special case involving empty strings. Also note that it falls down on your 0x89f test, but that's because in many environments that's an okay way to define a number literal.  If you want to catch that specific scenario you could add an additional check.  Even better, if that's your reason for not using <code>isNaN()</code> then just wrap your own function around <code>isNaN()</code> that can also do the additional check.</p>\n\n<p>In summary, <strong><em>if you want to know if a value can be converted to a number, actually try to convert it to a number.</em></strong></p>\n\n<hr>\n\n<p>I went back and did some research for <em>why</em> a whitespace string did not have the expected output, and I think I get it now: an empty string is coerced to <code>0</code> rather than <code>NaN</code>. Simply trimming the string before the length check will handle this case.</p>\n\n<p>Running the unit tests against the new code and it only fails on the infinity and boolean literals, and the only time that should be a problem is if you're generating code (really, who would type in a literal and check if it's numeric? You should <em>know</em>), and that would be some strange code to generate.</p>\n\n<p>But, again, <strong>the only reason ever to use this is if for some reason you have to avoid isNaN().</strong></p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 1634,
+                    "user_id": 143145,
+                    "accept_rate": 76
+                },
+                "down_vote_count": 8,
+                "up_vote_count": 62,
+                "is_accepted": false,
+                "answer_id": 1280236,
+                "question_id": 18082,
+                "body": "<p><a href=\"http://en.wikipedia.org/wiki/Yahoo!_UI_Library\" rel=\"noreferrer\">Yahoo! UI</a> uses this:</p>\n\n<pre><code>isNumber: function(o) {\n    return typeof o === 'number' &amp;&amp; isFinite(o);\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {},
+                "down_vote_count": 6,
+                "up_vote_count": 56,
+                "is_accepted": false,
+                "answer_id": 1561597,
+                "question_id": 18082,
+                "body": "<pre><code>function IsNumeric(num) {\n     return (num &gt;=0 || num &lt; 0);\n}\n</code></pre>\n\n<p>This works for 0x23 type numbers as well.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 715949,
+                    "user_id": 5445
+                },
+                "down_vote_count": 4,
+                "up_vote_count": 2939,
+                "is_accepted": true,
+                "answer_id": 1830844,
+                "question_id": 18082,
+                "body": "<p><a href=\"https://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric/174921#174921\">@Joel's answer</a> is pretty close, but it will fail in the following cases:</p>\n\n<pre><code>// Whitespace strings:\nIsNumeric(' ')    == true;\nIsNumeric('\\t\\t') == true;\nIsNumeric('\\n\\r') == true;\n\n// Number literals:\nIsNumeric(-1)  == false;\nIsNumeric(0)   == false;\nIsNumeric(1.1) == false;\nIsNumeric(8e5) == false;\n</code></pre>\n\n<p>Some time ago I had to implement an <code>IsNumeric</code> function, to find out if a variable contained a numeric value, <strong>regardless of its type</strong>, it could be a <code>String</code> containing a numeric value (I had to consider also exponential notation, etc.), a <code>Number</code> object, virtually anything could be passed to that function, I couldn't make any type assumptions,  taking care of type coercion (eg. <code>+true == 1;</code> but <code>true</code> shouldn't be considered as <code>\"numeric\"</code>).</p>\n\n<p>I think is worth sharing this set of <a href=\"http://run.plnkr.co/plunks/93FPpacuIcXqqKMecLdk/\" rel=\"noreferrer\"><strong>+30 unit tests</strong></a> made to numerous function implementations, and also share the one that passes all my tests:</p>\n\n<pre><code>function isNumeric(n) {\n    return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);\n}\n</code></pre>\n\n<p><strong>P.S.</strong> <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN\" rel=\"noreferrer\">isNaN</a> &amp; <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isFinite\" rel=\"noreferrer\">isFinite</a> have a confusing behavior due to forced conversion to number. In ES6, <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN\" rel=\"noreferrer\">Number.isNaN</a> &amp; <a href=\"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite\" rel=\"noreferrer\">Number.isFinite</a> would fix these issues. Keep that in mind when using them. </p>\n\n<hr>\n\n<p><strong>Update</strong> : \n<a href=\"https://github.com/jquery/jquery/blob/2.2-stable/src/core.js#L215\" rel=\"noreferrer\">Here's how jQuery does it now (2.2-stable)</a>: </p>\n\n<pre><code>isNumeric: function(obj) {\n    var realStringObj = obj &amp;&amp; obj.toString();\n    return !jQuery.isArray(obj) &amp;&amp; (realStringObj - parseFloat(realStringObj) + 1) &gt;= 0;\n}\n</code></pre>\n\n<p><strong>Update</strong> :\n<a href=\"https://github.com/angular/angular/blob/4.3.x/packages/common/src/pipes/number_pipe.ts#L172\" rel=\"noreferrer\">Angular 4.3</a>:</p>\n\n<pre><code>export function isNumeric(value: any): boolean {\n    return !isNaN(value - parseFloat(value));\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 49,
+                    "user_id": 352835
+                },
+                "down_vote_count": 2,
+                "up_vote_count": 8,
+                "is_accepted": false,
+                "answer_id": 2928538,
+                "question_id": 18082,
+                "body": "<p>To me, this is the best way:</p>\n\n<pre><code>isNumber : function(v){\n   return typeof v === 'number' &amp;&amp; isFinite(v);\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 21,
+                    "user_id": 532188
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 3,
+                "is_accepted": false,
+                "answer_id": 4365908,
+                "question_id": 18082,
+                "body": "<p>This should work. Some of the functions provided here are flawed, also should be faster than any other function here.</p>\n\n<pre><code>        function isNumeric(n)\n        {\n            var n2 = n;\n            n = parseFloat(n);\n            return (n!='NaN' &amp;&amp; n2==n);\n        }\n</code></pre>\n\n<p>Explained:</p>\n\n<p>Create a copy of itself, then converts the number into float, then compares itself with the original number, if it is still a number, (whether integer or float) , and matches the original number, that means, it is indeed a number.</p>\n\n<p>It works with numeric strings as well as plain numbers. Does not work with hexadecimal numbers. </p>\n\n<p>Warning: use at your own risk, no guarantees.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 1,
+                    "user_id": 573156
+                },
+                "down_vote_count": 4,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 4674364,
+                "question_id": 18082,
+                "body": "<p>The following may work as well.</p>\n\n<pre><code>function isNumeric(v) {\n         return v.length &gt; 0 &amp;&amp; !isNaN(v) &amp;&amp; v.search(/[A-Z]|[#]/ig) == -1;\n   };\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 31,
+                    "user_id": 593720
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 8,
+                "is_accepted": false,
+                "answer_id": 4827657,
+                "question_id": 18082,
+                "body": "<pre><code>return (input - 0) == input &amp;&amp; input.length &gt; 0;\n</code></pre>\n\n<p>didn't work for me. When I put in an alert and tested, <code>input.length</code> was <code>undefined</code>. I think there is no property to check integer length. So what I did was</p>\n\n<pre><code>var temp = '' + input;\nreturn (input - 0) == input &amp;&amp; temp.length &gt; 0;\n</code></pre>\n\n<p>It worked fine.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 21,
+                    "user_id": 613785
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 3,
+                "is_accepted": false,
+                "answer_id": 4975201,
+                "question_id": 18082,
+                "body": "<p>My solution,</p>\n\n<pre><code>function isNumeric(input) {\n    var number = /^\\-{0,1}(?:[0-9]+){0,1}(?:\\.[0-9]+){0,1}$/i;\n    var regex = RegExp(number);\n    return regex.test(input) &amp;&amp; input.length&gt;0;\n}\n</code></pre>\n\n<p>It appears to work in every situation, but I might be wrong.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 41,
+                    "user_id": 792721
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 4,
+                "is_accepted": false,
+                "answer_id": 6306344,
+                "question_id": 18082,
+                "body": "<p>An integer value can be verified by:</p>\n\n<pre><code>function isNumeric(value) {\n    var bool = isNaN(+value));\n    bool = bool || (value.indexOf('.') != -1);\n    bool = bool || (value.indexOf(\",\") != -1);\n    return !bool;\n};\n</code></pre>\n\n<p>This way is easier and faster! All tests are checked!</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 304,
+                    "user_id": 563688
+                },
+                "down_vote_count": 4,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 7349746,
+                "question_id": 18082,
+                "body": "<p>@Zoltan Lengyel 'other locales' comment (Apr 26 at 2:14) in @CMS Dec answer (2 '09 at 5:36):</p>\n\n<p>I would recommend testing for <code>typeof (n) === 'string'</code>:</p>\n\n<pre><code>    function isNumber(n) {\n        if (typeof (n) === 'string') {\n            n = n.replace(/,/, \".\");\n        }\n        return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);\n    }\n</code></pre>\n\n<p>This extends Zoltans recommendation to not only be able to test \"localized numbers\" like  <code>isNumber('12,50')</code> but also \"pure\" numbers like <code>isNumber(2011)</code>.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 71,
+                    "user_id": 1279325
+                },
+                "down_vote_count": 3,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 9776221,
+                "question_id": 18082,
+                "body": "<p>Well, I'm using this one I made...</p>\n\n<p>It's been working so far:</p>\n\n<pre><code>function checkNumber(value) {\n    if ( value % 1 == 0 )\n        return true;\n    else\n        return false;\n}\n</code></pre>\n\n<p>If you spot any problem with it, tell me, please.</p>\n\n<p>Like any numbers should be divisible by one with nothing left, I figured I could just use the module, and if you try dividing a string into a number the result wouldn't be that. So.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 51,
+                    "user_id": 1450658
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 7,
+                "is_accepted": false,
+                "answer_id": 10992737,
+                "question_id": 18082,
+                "body": "<p>If I'm not mistaken, this should match any valid JavaScript number value, excluding constants (<code>Infinity</code>, <code>NaN</code>) and the sign operators <code>+</code>/<code>-</code> (because they are not actually part of the number as far as I concerned, they are separate operators):</p>\n\n<p>I needed this for a tokenizer, where sending the number to JavaScript for evaluation wasn't an option... It's definitely not the shortest possible regular expression, but I believe it catches all the finer subtleties of JavaScript's number syntax.</p>\n\n<pre><code>/^(?:(?:(?:[1-9]\\d*|\\d)\\.\\d*|(?:[1-9]\\d*|\\d)?\\.\\d+|(?:[1-9]\\d*|\\d)) \n(?:[e]\\d+)?|0[0-7]+|0x[0-9a-f]+)$/i\n</code></pre>\n\n<p><strong>Valid numbers would include:</strong></p>\n\n<pre><code> - 0\n - 00\n - 01\n - 10\n - 0e1\n - 0e01\n - .0\n - 0.\n - .0e1\n - 0.e1\n - 0.e00\n - 0xf\n - 0Xf\n</code></pre>\n\n<p><strong>Invalid numbers would be</strong></p>\n\n<pre><code> - 00e1\n - 01e1\n - 00.0\n - 00x0\n - .\n - .e0\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 886,
+                    "user_id": 1016287,
+                    "accept_rate": 71
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 4,
+                "is_accepted": false,
+                "answer_id": 11063402,
+                "question_id": 18082,
+                "body": "<p>I'm using simpler solution:</p>\n\n<pre><code>function isNumber(num) {\n    return parseFloat(num).toString() == num\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 5999,
+                    "user_id": 1088866,
+                    "accept_rate": 100
+                },
+                "down_vote_count": 5,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 13618756,
+                "question_id": 18082,
+                "body": "<p>Here I've collected the \"good ones\" from this page and put them into a simple test pattern for you to evaluate on your own.</p>\n\n<p>For newbies, the <code>console.log</code> is a built in function (available in all modern browsers) that lets you output results to the JavaScript console (dig around, you'll find it) rather than having to output to your HTML page.</p>\n\n<pre><code>var isNumeric = function(val){\n    // --------------------------\n    // Recommended\n    // --------------------------\n\n    // jQuery - works rather well\n    // See CMS's unit test also: http://dl.getdropbox.com/u/35146/js/tests/isNumber.html\n    return !isNaN(parseFloat(val)) &amp;&amp; isFinite(val);\n\n    // Aquatic - good and fast, fails the \"0x89f\" test, but that test is questionable.\n    //return parseFloat(val)==val;\n\n    // --------------------------\n    // Other quirky options\n    // --------------------------\n    // Fails on \"\", null, newline, tab negative.\n    //return !isNaN(val);\n\n    // user532188 - fails on \"0x89f\"\n    //var n2 = val;\n    //val = parseFloat(val);\n    //return (val!='NaN' &amp;&amp; n2==val);\n\n    // Rafael - fails on negative + decimal numbers, may be good for isInt()?\n    // return ( val % 1 == 0 ) ? true : false;\n\n    // pottedmeat - good, but fails on stringy numbers, which may be a good thing for some folks?\n    //return /^-?(0|[1-9]\\d*|(?=\\.))(\\.\\d+)?$/.test(val);\n\n    // Haren - passes all\n    // borrowed from http://www.codetoad.com/javascript/isnumeric.asp\n    //var RE = /^-{0,1}\\d*\\.{0,1}\\d+$/;\n    //return RE.test(val);\n\n    // YUI - good for strict adherance to number type. Doesn't let stringy numbers through.\n    //return typeof val === 'number' &amp;&amp; isFinite(val);\n\n    // user189277 - fails on \"\" and \"\\n\"\n    //return ( val &gt;=0 || val &lt; 0);\n}\n\nvar tests = [0, 1, \"0\", 0x0, 0x000, \"0000\", \"0x89f\", 8e5, 0x23, -0, 0.0, \"1.0\", 1.0, -1.5, 0.42, '075', \"01\", '-01', \"0.\", \".0\", \"a\", \"a2\", true, false, \"#000\", '1.2.3', '#abcdef', '', \"\", \"\\n\", \"\\t\", '-', null, undefined];\n\nfor (var i=0; i&lt;tests.length; i++){\n    console.log( \"test \" + i + \":    \" + tests[i] + \"    \\t   \" + isNumeric(tests[i]) );\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 15448,
+                    "user_id": 1393862,
+                    "accept_rate": 84
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 17,
+                "is_accepted": false,
+                "answer_id": 14932605,
+                "question_id": 18082,
+                "body": "<p>Since jQuery 1.7, you can use <a href=\"http://api.jquery.com/jQuery.isNumeric/\"><code>jQuery.isNumeric()</code></a>:</p>\n\n<pre><code>$.isNumeric('-1');      // true\n$.isNumeric('-1.5');    // true\n$.isNumeric('0');       // true\n$.isNumeric('0.42');    // true\n$.isNumeric('.42');     // true\n$.isNumeric('0x89f');   // true (valid hexa number)\n$.isNumeric('99,999');  // false\n$.isNumeric('#abcdef'); // false\n$.isNumeric('1.2.3');   // false\n$.isNumeric('');        // false\n$.isNumeric('blah');    // false\n</code></pre>\n\n<p>Just note that unlike what you said, <code>0x89f</code> is a valid number (hexa)</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 20126,
+                    "user_id": 592253,
+                    "accept_rate": 92
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 50,
+                "is_accepted": false,
+                "answer_id": 15043984,
+                "question_id": 18082,
+                "body": "<p>The accepted answer failed your test #7 and I guess it's because you changed your mind. So this is a response to the accepted answer, with which I had issues.</p>\n\n<p>During some projects I have needed to validate some data and be as certain as possible that it is a javascript numerical value that can be used in mathematical operations.</p>\n\n<p>jQuery, and some other javascript libraries already include such a function, usually called <code>isNumeric</code>. There is also a <a href=\"https://stackoverflow.com/a/1830844/592253\">post on stackoverflow</a> that has been widely accepted as the answer, the same general routine that the afore mentioned libraries are using.</p>\n\n<pre><code>function isNumber(n) {\n  return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);\n}\n</code></pre>\n\n<p>First, the code above would return true if the argument was an array of length 1, and that single element was of a type deemed as numeric by the above logic. In my opinion, if it's an array then its not numeric.</p>\n\n<p>To alleviate this problem, I added a check to discount arrays from the logic</p>\n\n<pre><code>function isNumber(n) {\n  return Object.prototype.toString.call(n) !== '[object Array]' &amp;&amp;!isNaN(parseFloat(n)) &amp;&amp; isFinite(n);\n}\n</code></pre>\n\n<p>Of course, you could also use <code>Array.isArray</code>, jquery <code>$.isArray</code> or prototype <code>Object.isArray</code> instead of <code>Object.prototype.toString.call(n) !== '[object Array]'</code></p>\n\n<p>My second issue was that Negative Hexadecimal integer literal strings (\"-0xA\" -> -10) were not being counted as numeric. However, Positive Hexadecimal integer literal strings (\"0xA\" -> 10) were treated as numeric.\nI needed both to be valid numeric.</p>\n\n<p>I then modified the logic to take this into account.</p>\n\n<pre><code>function isNumber(n) {\n  return Object.prototype.toString.call(n) !== '[object Array]' &amp;&amp;!isNaN(parseFloat(n)) &amp;&amp; isFinite(n.toString().replace(/^-/, ''));\n}\n</code></pre>\n\n<p>If you are worried about the creation of the regex each time the function is called then you could rewrite it within a closure, something like this</p>\n\n<pre><code>var isNumber = (function () {\n  var rx = /^-/;\n\n  return function (n) {\n      return Object.prototype.toString.call(n) !== '[object Array]' &amp;&amp;!isNaN(parseFloat(n)) &amp;&amp; isFinite(n.toString().replace(rx, ''));\n  };\n}());\n</code></pre>\n\n<p>I then took CMSs <a href=\"http://dl.getdropbox.com/u/35146/js/tests/isNumber.html\" rel=\"noreferrer\">+30 test cases</a> and cloned the <a href=\"http://jsfiddle.net/Xotic750/2q8pp/\" rel=\"noreferrer\">testing on jsfiddle</a> added my extra test cases and my above described solution.</p>\n\n<p>It may not replace the widely accepted/used answer but if this is more of what you are expecting as results from your isNumeric function then hopefully this will be of some help.</p>\n\n<p><strong>EDIT:</strong> As pointed out by <a href=\"https://stackoverflow.com/a/15230431/592253\">Bergi</a>, there are other possible objects that could be considered numeric and it would be better to whitelist than blacklist. With this in mind I would add to the criteria.</p>\n\n<p>I want my isNumeric function to consider only Numbers or Strings</p>\n\n<p>With this in mind, it would be better to use</p>\n\n<pre><code>function isNumber(n) {\n  return (Object.prototype.toString.call(n) === '[object Number]' || Object.prototype.toString.call(n) === '[object String]') &amp;&amp;!isNaN(parseFloat(n)) &amp;&amp; isFinite(n.toString().replace(/^-/, ''));\n}\n</code></pre>\n\n<p><strong>Test the solutions</strong></p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"false\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>var testHelper = function() {\r\n\r\n  var testSuite = function() {\r\n    test(\"Integer Literals\", function() {\r\n      ok(isNumber(\"-10\"), \"Negative integer string\");\r\n      ok(isNumber(\"0\"), \"Zero string\");\r\n      ok(isNumber(\"5\"), \"Positive integer string\");\r\n      ok(isNumber(-16), \"Negative integer number\");\r\n      ok(isNumber(0), \"Zero integer number\");\r\n      ok(isNumber(32), \"Positive integer number\");\r\n      ok(isNumber(\"040\"), \"Octal integer literal string\");\r\n      ok(isNumber(0144), \"Octal integer literal\");\r\n      ok(isNumber(\"-040\"), \"Negative Octal integer literal string\");\r\n      ok(isNumber(-0144), \"Negative Octal integer literal\");\r\n      ok(isNumber(\"0xFF\"), \"Hexadecimal integer literal string\");\r\n      ok(isNumber(0xFFF), \"Hexadecimal integer literal\");\r\n      ok(isNumber(\"-0xFF\"), \"Negative Hexadecimal integer literal string\");\r\n      ok(isNumber(-0xFFF), \"Negative Hexadecimal integer literal\");\r\n    });\r\n\r\n    test(\"Foating-Point Literals\", function() {\r\n      ok(isNumber(\"-1.6\"), \"Negative floating point string\");\r\n      ok(isNumber(\"4.536\"), \"Positive floating point string\");\r\n      ok(isNumber(-2.6), \"Negative floating point number\");\r\n      ok(isNumber(3.1415), \"Positive floating point number\");\r\n      ok(isNumber(8e5), \"Exponential notation\");\r\n      ok(isNumber(\"123e-2\"), \"Exponential notation string\");\r\n    });\r\n\r\n    test(\"Non-Numeric values\", function() {\r\n      equals(isNumber(\"\"), false, \"Empty string\");\r\n      equals(isNumber(\"        \"), false, \"Whitespace characters string\");\r\n      equals(isNumber(\"\\t\\t\"), false, \"Tab characters string\");\r\n      equals(isNumber(\"abcdefghijklm1234567890\"), false, \"Alphanumeric character string\");\r\n      equals(isNumber(\"xabcdefx\"), false, \"Non-numeric character string\");\r\n      equals(isNumber(true), false, \"Boolean true literal\");\r\n      equals(isNumber(false), false, \"Boolean false literal\");\r\n      equals(isNumber(\"bcfed5.2\"), false, \"Number with preceding non-numeric characters\");\r\n      equals(isNumber(\"7.2acdgs\"), false, \"Number with trailling non-numeric characters\");\r\n      equals(isNumber(undefined), false, \"Undefined value\");\r\n      equals(isNumber(null), false, \"Null value\");\r\n      equals(isNumber(NaN), false, \"NaN value\");\r\n      equals(isNumber(Infinity), false, \"Infinity primitive\");\r\n      equals(isNumber(Number.POSITIVE_INFINITY), false, \"Positive Infinity\");\r\n      equals(isNumber(Number.NEGATIVE_INFINITY), false, \"Negative Infinity\");\r\n      equals(isNumber(new Date(2009, 1, 1)), false, \"Date object\");\r\n      equals(isNumber(new Object()), false, \"Empty object\");\r\n      equals(isNumber(function() {}), false, \"Instance of a function\");\r\n      equals(isNumber([]), false, \"Empty Array\");\r\n      equals(isNumber([\"-10\"]), false, \"Array Negative integer string\");\r\n      equals(isNumber([\"0\"]), false, \"Array Zero string\");\r\n      equals(isNumber([\"5\"]), false, \"Array Positive integer string\");\r\n      equals(isNumber([-16]), false, \"Array Negative integer number\");\r\n      equals(isNumber([0]), false, \"Array Zero integer number\");\r\n      equals(isNumber([32]), false, \"Array Positive integer number\");\r\n      equals(isNumber([\"040\"]), false, \"Array Octal integer literal string\");\r\n      equals(isNumber([0144]), false, \"Array Octal integer literal\");\r\n      equals(isNumber([\"-040\"]), false, \"Array Negative Octal integer literal string\");\r\n      equals(isNumber([-0144]), false, \"Array Negative Octal integer literal\");\r\n      equals(isNumber([\"0xFF\"]), false, \"Array Hexadecimal integer literal string\");\r\n      equals(isNumber([0xFFF]), false, \"Array Hexadecimal integer literal\");\r\n      equals(isNumber([\"-0xFF\"]), false, \"Array Negative Hexadecimal integer literal string\");\r\n      equals(isNumber([-0xFFF]), false, \"Array Negative Hexadecimal integer literal\");\r\n      equals(isNumber([1, 2]), false, \"Array with more than 1 Positive interger number\");\r\n      equals(isNumber([-1, -2]), false, \"Array with more than 1 Negative interger number\");\r\n    });\r\n  }\r\n\r\n  var functionsToTest = [\r\n\r\n    function(n) {\r\n      return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);\r\n    },\r\n\r\n    function(n) {\r\n      return !isNaN(n) &amp;&amp; !isNaN(parseFloat(n));\r\n    },\r\n\r\n    function(n) {\r\n      return !isNaN((n));\r\n    },\r\n\r\n    function(n) {\r\n      return !isNaN(parseFloat(n));\r\n    },\r\n\r\n    function(n) {\r\n      return typeof(n) != \"boolean\" &amp;&amp; !isNaN(n);\r\n    },\r\n\r\n    function(n) {\r\n      return parseFloat(n) === Number(n);\r\n    },\r\n\r\n    function(n) {\r\n      return parseInt(n) === Number(n);\r\n    },\r\n\r\n    function(n) {\r\n      return !isNaN(Number(String(n)));\r\n    },\r\n\r\n    function(n) {\r\n      return !isNaN(+('' + n));\r\n    },\r\n\r\n    function(n) {\r\n      return (+n) == n;\r\n    },\r\n\r\n    function(n) {\r\n      return n &amp;&amp; /^-?\\d+(\\.\\d+)?$/.test(n + '');\r\n    },\r\n\r\n    function(n) {\r\n      return isFinite(Number(String(n)));\r\n    },\r\n\r\n    function(n) {\r\n      return isFinite(String(n));\r\n    },\r\n\r\n    function(n) {\r\n      return !isNaN(n) &amp;&amp; !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);\r\n    },\r\n\r\n    function(n) {\r\n      return parseFloat(n) == n;\r\n    },\r\n\r\n    function(n) {\r\n      return (n - 0) == n &amp;&amp; n.length &gt; 0;\r\n    },\r\n\r\n    function(n) {\r\n      return typeof n === 'number' &amp;&amp; isFinite(n);\r\n    },\r\n\r\n    function(n) {\r\n      return !Array.isArray(n) &amp;&amp; !isNaN(parseFloat(n)) &amp;&amp; isFinite(n.toString().replace(/^-/, ''));\r\n    }\r\n\r\n  ];\r\n\r\n\r\n  // Examines the functionsToTest array, extracts the return statement of each function\r\n  // and fills the toTest select element.\r\n  var fillToTestSelect = function() {\r\n    for (var i = 0; i &lt; functionsToTest.length; i++) {\r\n      var f = functionsToTest[i].toString();\r\n      var option = /[\\s\\S]*return ([\\s\\S]*);/.exec(f)[1];\r\n      $(\"#toTest\").append('&lt;option value=\"' + i + '\"&gt;' + (i + 1) + '. ' + option + '&lt;/option&gt;');\r\n    }\r\n  }\r\n\r\n  var performTest = function(functionNumber) {\r\n    reset(); // Reset previous test\r\n    $(\"#tests\").html(\"\"); //Clean test results\r\n    isNumber = functionsToTest[functionNumber]; // Override the isNumber global function with the one to test\r\n    testSuite(); // Run the test\r\n\r\n    // Get test results\r\n    var totalFail = 0;\r\n    var totalPass = 0;\r\n    $(\"b.fail\").each(function() {\r\n      totalFail += Number($(this).html());\r\n    });\r\n    $(\"b.pass\").each(function() {\r\n      totalPass += Number($(this).html());\r\n    });\r\n    $(\"#testresult\").html(totalFail + \" of \" + (totalFail + totalPass) + \" test failed.\");\r\n\r\n    $(\"#banner\").attr(\"class\", \"\").addClass(totalFail &gt; 0 ? \"fail\" : \"pass\");\r\n  }\r\n\r\n  return {\r\n    performTest: performTest,\r\n    fillToTestSelect: fillToTestSelect,\r\n    testSuite: testSuite\r\n  };\r\n}();\r\n\r\n\r\n$(document).ready(function() {\r\n  testHelper.fillToTestSelect();\r\n  testHelper.performTest(0);\r\n\r\n  $(\"#toTest\").change(function() {\r\n    testHelper.performTest($(this).children(\":selected\").val());\r\n  });\r\n});</code></pre>\r\n<pre class=\"snippet-code-html lang-html prettyprint-override\"><code>&lt;script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\" type=\"text/javascript\"&gt;&lt;/script&gt;\r\n&lt;script src=\"https://rawgit.com/Xotic750/testrunner-old/master/testrunner.js\" type=\"text/javascript\"&gt;&lt;/script&gt;\r\n&lt;link href=\"https://rawgit.com/Xotic750/testrunner-old/master/testrunner.css\" rel=\"stylesheet\" type=\"text/css\"&gt;\r\n&lt;h1&gt;isNumber Test Cases&lt;/h1&gt;\r\n\r\n&lt;h2 id=\"banner\" class=\"pass\"&gt;&lt;/h2&gt;\r\n\r\n&lt;h2 id=\"userAgent\"&gt;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11&lt;/h2&gt;\r\n\r\n&lt;div id=\"currentFunction\"&gt;&lt;/div&gt;\r\n\r\n&lt;div id=\"selectFunction\"&gt;\r\n  &lt;label for=\"toTest\" style=\"font-weight:bold; font-size:Large;\"&gt;Select function to test:&lt;/label&gt;\r\n  &lt;select id=\"toTest\" name=\"toTest\"&gt;\r\n  &lt;/select&gt;\r\n&lt;/div&gt;\r\n\r\n&lt;div id=\"testCode\"&gt;&lt;/div&gt;\r\n\r\n&lt;ol id=\"tests\"&gt;\r\n  &lt;li class=\"pass\"&gt;\r\n    &lt;strong&gt;Integer Literals &lt;b style=\"color:black;\"&gt;(0, 10, 10)&lt;/b&gt;&lt;/strong&gt;\r\n\r\n    &lt;ol style=\"display: none;\"&gt;\r\n      &lt;li class=\"pass\"&gt;Negative integer string&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Zero string&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Positive integer string&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Negative integer number&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Zero integer number&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Positive integer number&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Octal integer literal string&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Octal integer literal&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Hexadecimal integer literal string&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Hexadecimal integer literal&lt;/li&gt;\r\n    &lt;/ol&gt;\r\n  &lt;/li&gt;\r\n\r\n  &lt;li class=\"pass\"&gt;\r\n    &lt;strong&gt;Foating-Point Literals &lt;b style=\"color:black;\"&gt;(0, 6, 6)&lt;/b&gt;&lt;/strong&gt;\r\n\r\n    &lt;ol style=\"display: none;\"&gt;\r\n      &lt;li class=\"pass\"&gt;Negative floating point string&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Positive floating point string&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Negative floating point number&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Positive floating point number&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Exponential notation&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Exponential notation string&lt;/li&gt;\r\n    &lt;/ol&gt;\r\n  &lt;/li&gt;\r\n\r\n  &lt;li class=\"pass\"&gt;\r\n    &lt;strong&gt;Non-Numeric values &lt;b style=\"color:black;\"&gt;(0, 18, 18)&lt;/b&gt;&lt;/strong&gt;\r\n\r\n    &lt;ol style=\"display: none;\"&gt;\r\n      &lt;li class=\"pass\"&gt;Empty string: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Whitespace characters string: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Tab characters string: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Alphanumeric character string: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Non-numeric character string: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Boolean true literal: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Boolean false literal: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Number with preceding non-numeric characters: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Number with trailling non-numeric characters: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Undefined value: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Null value: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;NaN value: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Infinity primitive: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Positive Infinity: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Negative Infinity: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Date object: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Empty object: false&lt;/li&gt;\r\n\r\n      &lt;li class=\"pass\"&gt;Instance of a function: false&lt;/li&gt;\r\n    &lt;/ol&gt;\r\n  &lt;/li&gt;\r\n&lt;/ol&gt;\r\n\r\n&lt;div id=\"main\"&gt;\r\n  This page contains tests for a set of isNumber functions. To see them, take a look at the source.\r\n&lt;/div&gt;\r\n\r\n&lt;div&gt;\r\n  &lt;p class=\"result\"&gt;Tests completed in 0 milliseconds.\r\n    &lt;br&gt;0 tests of 0 failed.&lt;/p&gt;\r\n&lt;/div&gt;</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 1489,
+                    "user_id": 2060915,
+                    "accept_rate": 67
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 15103743,
+                "question_id": 18082,
+                "body": "<p><strong>knockoutJs Inbuild library validation functions</strong> </p>\n\n<p>By extending it the field get validated</p>\n\n<p>1) number</p>\n\n<p><code>self.number = ko.observable(numberValue)</code><strong>.extend({ number: true})</strong>;</p>\n\n<p>TestCase</p>\n\n<pre><code>numberValue = '0.0'    --&gt; true\nnumberValue = '0'      --&gt; true\nnumberValue = '25'     --&gt; true\nnumberValue = '-1'     --&gt; true\nnumberValue = '-3.5'   --&gt; true\nnumberValue = '11.112' --&gt; true\nnumberValue = '0x89f'  --&gt; false\nnumberValue = ''       --&gt; false\nnumberValue = 'sfsd'   --&gt; false\nnumberValue = 'dg##$'  --&gt; false\n</code></pre>\n\n<p>2) digit</p>\n\n<p><code>self.number = ko.observable(numberValue)</code><strong>.extend({ digit: true})</strong>;</p>\n\n<p>TestCase</p>\n\n<pre><code>numberValue = '0'      --&gt; true\nnumberValue = '25'     --&gt; true\nnumberValue = '0.0'    --&gt; false\nnumberValue = '-1'     --&gt; false\nnumberValue = '-3.5'   --&gt; false\nnumberValue = '11.112' --&gt; false\nnumberValue = '0x89f'  --&gt; false\nnumberValue = ''       --&gt; false\nnumberValue = 'sfsd'   --&gt; false\nnumberValue = 'dg##$'  --&gt; false\n</code></pre>\n\n<p>3) min and max</p>\n\n<p><code>self.number = ko.observable(numberValue)</code><strong>.extend({ min: 5}).extend({ max: 10})</strong>;</p>\n\n<p>This field accept value between 5 and 10 only</p>\n\n<p>TestCase</p>\n\n<pre><code>numberValue = '5'    --&gt; true\nnumberValue = '6'    --&gt; true\nnumberValue = '6.5'  --&gt; true\nnumberValue = '9'    --&gt; true\nnumberValue = '11'   --&gt; false\nnumberValue = '0'    --&gt; false\nnumberValue = ''    --&gt; false\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 2994,
+                    "user_id": 1129712
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": false,
+                "answer_id": 15997937,
+                "question_id": 18082,
+                "body": "<p><a href=\"https://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric/1839844#1839844\">@CMS' answer</a>: Your snippet failed on whitespace cases on my machine using nodejs. So I combined it with \n<a href=\"https://stackoverflow.com/questions/18082/validate-numbers-in-javascript-isnumeric/174921#174921\">@joel's answer</a> to the following:</p>\n\n<pre><code>is_float = function(v) {\n    return !isNaN(v) &amp;&amp; isFinite(v) &amp;&amp;\n        (typeof(v) == 'number' || v.replace(/^\\s+|\\s+$/g, '').length &gt; 0);\n}\n</code></pre>\n\n<p>I unittested it with those cases that are floats:</p>\n\n<pre><code>var t = [\n        0,\n        1.2123,\n        '0',\n        '2123.4',\n        -1,\n        '-1',\n        -123.423,\n        '-123.432',\n        07,\n        0xad,\n        '07',\n        '0xad'\n    ];\n</code></pre>\n\n<p>and those cases that are no floats (including empty whitespaces and objects / arrays):</p>\n\n<pre><code>    var t = [\n        'hallo',\n        [],\n        {},\n        'jklsd0',\n        '',\n        \"\\t\",\n        \"\\n\",\n        ' '\n    ];\n</code></pre>\n\n<p>Everything works as expected here. Maybe this helps.</p>\n\n<p>Full source code for this can be found <a href=\"https://github.com/philippkemmeter/philfw/blob/master/lib/ValueChecker.js\" rel=\"nofollow noreferrer\">here</a>.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 4519,
+                    "user_id": 1847185,
+                    "accept_rate": 60
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 4,
+                "is_accepted": false,
+                "answer_id": 16654296,
+                "question_id": 18082,
+                "body": "<p>Here's a lil bit improved version (probably the fastest way out there) that I use instead of exact jQuery's variant, I really don't know why don't they use this one:</p>\n\n<pre><code>function isNumeric(val) {\n    return !isNaN(+val) &amp;&amp; isFinite(val);\n}\n</code></pre>\n\n<p>The downside of jQuery's version is that if you pass a string with leading numerics and trailing letters like <code>\"123abc\"</code> the <code>parseFloat | parseInt</code> will extract the numeric fraction out and return 123, BUT, the second guard <code>isFinite</code> will fail it anyway.\nWith the unary <code>+</code> operator it will die on the very first guard since + throws NaN for such hybrids :)\nA little performance yet I think a solid semantic gain.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 14972,
+                    "user_id": 623735,
+                    "accept_rate": 85
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 7,
+                "is_accepted": false,
+                "answer_id": 16973976,
+                "question_id": 18082,
+                "body": "<p>Only problem I had with @CMS's <a href=\"https://stackoverflow.com/a/1830844/623735\">answer</a> is the exclusion of <code>NaN</code> and Infinity, which are useful numbers for many situations. One way to check for <code>NaN</code>'s is to check for numeric values that don't equal themselves, <code>NaN != NaN</code>!  So there are really 3 tests you'd like to deal with ...</p>\n\n<pre><code>function isNumber(n) {\n  n = parseFloat(n);\n  return !isNaN(n) || n != n;\n}\nfunction isFiniteNumber(n) {\n  n = parseFloat(n);\n  return !isNaN(n) &amp;&amp; isFinite(n);\n}    \nfunction isComparableNumber(n) {\n  n = parseFloat(n);\n  return (n &gt;=0 || n &lt; 0);\n}\n\nisFiniteNumber('NaN')\nfalse\nisFiniteNumber('OxFF')\ntrue\nisNumber('NaN')\ntrue\nisNumber(1/0-1/0)\ntrue\nisComparableNumber('NaN')\nfalse\nisComparableNumber('Infinity')\ntrue\n</code></pre>\n\n<p>My isComparableNumber is pretty close to another elegant <a href=\"https://stackoverflow.com/a/1561597/623735\">answer</a>, but handles hex and other string representations of numbers.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 3087,
+                    "user_id": 2188869,
+                    "accept_rate": 75
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 1,
+                "is_accepted": false,
+                "answer_id": 17559810,
+                "question_id": 18082,
+                "body": "<p>I found simple solution, probably not best but it's working fine :)</p>\n\n<p>So, what I do is next, I parse string to Int and check if length size of new variable which is now int type is same as length of original string variable. Logically if size is the same it means string is fully parsed to int and that is only possible if string is \"made\" only of numbers.</p>\n\n<pre><code>var val=1+$(e).val()+'';\nvar n=parseInt(val)+'';\nif(val.length == n.length )alert('Is int');\n</code></pre>\n\n<p>You can easily put that code in function and instead of alert use return true if int.\nRemember, if you use dot or comma in string you are checking it's still false cos you are parsing to int.</p>\n\n<p>Note: Adding 1+ on e.val so starting zero wouldn't be removed.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 832,
+                    "user_id": 2215486
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 3,
+                "is_accepted": false,
+                "answer_id": 19056758,
+                "question_id": 18082,
+                "body": "<p>I have run the following below and it passes all the test cases...</p>\n\n<p>It makes use of the different way in which <code>parseFloat</code> and <code>Number</code> handle their inputs...</p>\n\n<pre><code>function IsNumeric(_in) {\n    return (parseFloat(_in) === Number(_in) &amp;&amp; Number(_in) !== NaN);\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 177,
+                    "user_id": 1985601,
+                    "accept_rate": 50
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": false,
+                "answer_id": 20712631,
+                "question_id": 18082,
+                "body": "<p>The following seems to works fine for many cases:</p>\n\n<pre><code>function isNumeric(num) {\n    return (num &gt; 0 || num === 0 || num === '0' || num &lt; 0) &amp;&amp; num !== true &amp;&amp; isFinite(num);\n}\n</code></pre>\n\n<p>This is built on top of this answer (which is for this answer too):\n<a href=\"https://stackoverflow.com/a/1561597/1985601\">https://stackoverflow.com/a/1561597/1985601</a></p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 4452,
+                    "user_id": 814160,
+                    "accept_rate": 40
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 8,
+                "is_accepted": false,
+                "answer_id": 21096633,
+                "question_id": 18082,
+                "body": "<p>I realize the original question did not mention jQuery, but if you do use jQuery, you can do:</p>\n\n<pre><code>$.isNumeric(val)\n</code></pre>\n\n<p>Simple.</p>\n\n<p><a href=\"https://api.jquery.com/jQuery.isNumeric/\" rel=\"noreferrer\">https://api.jquery.com/jQuery.isNumeric/</a> (as of jQuery 1.7)</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 3876,
+                    "user_id": 246724,
+                    "accept_rate": 38
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 23049711,
+                "question_id": 18082,
+                "body": "<p>I realize this has been answered many times, but the following is a decent candidate which can be useful in some scenarios.</p>\n\n<p>it should be noted that it assumes that '.42' is NOT a number, and '4.' is NOT a number, so this should be taken into account.</p>\n\n<pre><code>function isDecimal(x) {\n  return '' + x === '' + +x;\n}\n\nfunction isInteger(x) {\n  return '' + x === '' + parseInt(x);\n}\n</code></pre>\n\n<p>The <code>isDecimal</code> passes the following test:</p>\n\n<pre><code>function testIsNumber(f) {\n  return f('-1') &amp;&amp; f('-1.5') &amp;&amp; f('0') &amp;&amp; f('0.42')\n    &amp;&amp; !f('.42') &amp;&amp; !f('99,999') &amp;&amp; !f('0x89f')\n    &amp;&amp; !f('#abcdef') &amp;&amp; !f('1.2.3') &amp;&amp; !f('') &amp;&amp; !f('blah');\n}\n</code></pre>\n\n<p>The idea here is that every number or integer has one \"canonical\" string representation, and every non-canonical representation should be rejected. So we cast to a number and back, and see if the result is the original string.</p>\n\n<p>Whether these functions are useful for you depends on the use case. One feature is that <em>distinct strings represent distinct numbers</em> (if both pass the <code>isNumber()</code> test).</p>\n\n<p>This is relevant e.g. for numbers as object property names.</p>\n\n<pre><code>var obj = {};\nobj['4'] = 'canonical 4';\nobj['04'] = 'alias of 4';\nobj[4];  // prints 'canonical 4' to the console.\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 6467,
+                    "user_id": 1180387,
+                    "accept_rate": 67
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 25861284,
+                "question_id": 18082,
+                "body": "<p>I use this way to chack that varible is numeric:</p>\n\n<pre><code>v * 1 == v\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 2348,
+                    "user_id": 2458202
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": false,
+                "answer_id": 27471814,
+                "question_id": 18082,
+                "body": "<pre><code>function isNumber(n) {\n    return (n===n+''||n===n-0) &amp;&amp; n*0==0 &amp;&amp; /\\S/.test(n);\n}\n</code></pre>\n\n<p><strong>Explanations:</strong></p>\n\n<p><code>(n===n-0||n===n+'')</code> verifies if n is a number or a string <em>(discards arrays, boolean, date, null, ...)</em>. You can replace <code>(n===n-0||n===n+'')</code> by <code>n!==undefined &amp;&amp; n!==null &amp;&amp; (n.constructor===Number||n.constructor===String)</code>: significantly faster but less concise.</p>\n\n<p><code>n*0==0</code> verifies if n is a finite number as <code>isFinite(n)</code> does. If you need to check strings that represent negative hexadecimal, just replace <code>n*0==0</code> by something like <code>n.toString().replace(/^\\s*-/,'')*0==0</code>.<br>\nIt costs a little of course, so if you don't need it, don't use it.</p>\n\n<p><code>/\\S/.test(n)</code> discards empty strings or strings, that contain only white-spaces <em>(necessary since <code>isFinite(n) or n*0==0</code> return a <code>false</code> positive in this case)</em>. You can reduce the number of call to <code>.test(n)</code> by using <code>(n!=0||/0/.test(n))</code> instead of <code>/\\S/.test(n)</code>, or you can use a slightly faster but less concise test such as <code>(n!=0||(n+'').indexOf('0')&gt;=0)</code>: tiny improvement.</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 9970,
+                    "user_id": 606371,
+                    "accept_rate": 71
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 3,
+                "is_accepted": false,
+                "answer_id": 27622495,
+                "question_id": 18082,
+                "body": "<p>None of the answers return <code>false</code> for empty strings, a fix for that...</p>\n\n<pre><code>function is_numeric(n)\n{\n return (n != '' &amp;&amp; !isNaN(parseFloat(n)) &amp;&amp; isFinite(n));\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 1822,
+                    "user_id": 998008
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": false,
+                "answer_id": 34791974,
+                "question_id": 18082,
+                "body": "<p>One can use a type-check library like <a href=\"https://github.com/arasatasaygin/is.js\" rel=\"nofollow\">https://github.com/arasatasaygin/is.js</a> or just extract a check snippet from there (<a href=\"https://github.com/arasatasaygin/is.js/blob/master/is.js#L131\" rel=\"nofollow\">https://github.com/arasatasaygin/is.js/blob/master/is.js#L131</a>):</p>\n\n<pre><code>is.nan = function(value) {    // NaN is number :) \n  return value !== value;\n};\n // is a given value number?\nis.number = function(value) {\n    return !is.nan(value) &amp;&amp; Object.prototype.toString.call(value) === '[object Number]';\n};\n</code></pre>\n\n<p>In general if  you need it to validate parameter types (on entry point of function call), you can go with JSDOC-compliant contracts (<a href=\"https://www.npmjs.com/package/bycontract\" rel=\"nofollow\">https://www.npmjs.com/package/bycontract</a>):</p>\n\n<pre><code>/**\n * This is JSDOC syntax\n * @param {number|string} sum\n * @param {Object.&lt;string, string&gt;} payload\n * @param {function} cb\n */\nfunction foo( sum, payload, cb ) {\n  // Test if the contract is respected at entry point\n  byContract( arguments, [ \"number|string\", \"Object.&lt;string, string&gt;\", \"function\" ] );\n}\n// Test it\nfoo( 100, { foo: \"foo\" }, function(){}); // ok\nfoo( 100, { foo: 100 }, function(){}); // exception\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 168,
+                    "user_id": 4813369
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 35324436,
+                "question_id": 18082,
+                "body": "<p>If you need to validate a special set of decimals y\nyou can use this simple javascript:</p>\n\n<p><a href=\"http://codesheet.org/codesheet/x1kI7hAD\" rel=\"nofollow\">http://codesheet.org/codesheet/x1kI7hAD</a></p>\n\n<pre><code>&lt;input type=\"text\" name=\"date\" value=\"\" pattern=\"[0-9]){1,2}(\\.){1}([0-9]){2}\" maxlength=\"6\" placeholder=\"od npr.: 16.06\" onchange=\"date(this);\" /&gt;\n</code></pre>\n\n<p>The Javascript:</p>\n\n<pre><code>function date(inputField) {        \n  var isValid = /^([0-9]){1,2}(\\.){1}([0-9]){2}$/.test(inputField.value);   \n  if (isValid) {\n    inputField.style.backgroundColor = '#bfa';\n  } else {\n    inputField.style.backgroundColor = '#fba';\n  }\n  return isValid;\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 4147,
+                    "user_id": 3221274,
+                    "accept_rate": 83
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 36318751,
+                "question_id": 18082,
+                "body": "<p><code>isNumeric=(el)=&gt;{return Boolean(parseFloat(el)) &amp;&amp; isFinite(el)}</code></p>\n\n<p>Nothing very different but we can use Boolean constructor</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 10009,
+                    "user_id": 1850340,
+                    "accept_rate": 33
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 3,
+                "is_accepted": false,
+                "answer_id": 36533370,
+                "question_id": 18082,
+                "body": "<p>To check if a variable contains a valid number and not\njust a String which looks like a number,\n<code>Number.isFinite(value)</code> can be used.</p>\n\n<p>This is part of the language since\n<a href=\"http://www.ecma-international.org/ecma-262/6.0/#sec-number.isfinite\" rel=\"nofollow\">ES2015</a></p>\n\n<p>Examples:</p>\n\n<pre><code>Number.isFinite(Infinity)   // false\nNumber.isFinite(NaN)        // false\nNumber.isFinite(-Infinity)  // false\n\nNumber.isFinite(0)          // true\nNumber.isFinite(2e64)       // true\n\nNumber.isFinite('0')        // false\nNumber.isFinite(null)       // false\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 21,
+                    "user_id": 585237
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 37331792,
+                "question_id": 18082,
+                "body": "<pre><code>function isNumeric(n) {\n    var isNumber = true;\n\n    $.each(n.replace(/ /g,'').toString(), function(i, v){\n        if(v!=',' &amp;&amp; v!='.' &amp;&amp; v!='-'){\n            if(isNaN(v)){\n               isNumber = false;\n               return false;\n            }\n         }\n     });\n\n    return isNumber;\n}\n\nisNumeric(-3,4567.89);   // true &lt;br&gt;\n\nisNumeric(3,4567.89);   // true &lt;br&gt;\n\nisNumeric(\"-3,4567.89\");   // true &lt;br&gt;\n\nisNumeric(3d,4567.89);   // false\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 8479,
+                    "user_id": 3522687,
+                    "accept_rate": 52
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": false,
+                "answer_id": 37384296,
+                "question_id": 18082,
+                "body": "<p>Best way to do this is like this:</p>\n\n<pre><code>function isThisActuallyANumber(data){\n    return ( typeof data === \"number\" &amp;&amp; !isNaN(data) );\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 625,
+                    "user_id": 1636207
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 6,
+                "is_accepted": false,
+                "answer_id": 37975166,
+                "question_id": 18082,
+                "body": "<p>I think parseFloat function can do all the work here. The function below passes all the tests on this page including <code>isNumeric(Infinity) == true</code>:</p>\n\n<pre><code>function isNumeric(n) {\n\n    return parseFloat(n) == n;\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 494,
+                    "user_id": 3626940
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 3,
+                "is_accepted": false,
+                "answer_id": 38882756,
+                "question_id": 18082,
+                "body": "<pre><code>function inNumeric(n){\n   return Number(n).toString() === n;\n}\n</code></pre>\n\n<p>If n is numeric <code>Number(n)</code> will return the numeric value and <code>toString()</code> will turn it back to a string. But if n isn't numeric <code>Number(n)</code> will return <code>NaN</code> so it won't match the original <code>n</code></p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 2636,
+                    "user_id": 4591364,
+                    "accept_rate": 80
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 41526723,
+                "question_id": 18082,
+                "body": "<p>I think my code is perfect ...</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"false\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>/**\r\n * @param {string} s\r\n * @return {boolean}\r\n */\r\nvar isNumber = function(s) {\r\n    return s.trim()!==\"\" &amp;&amp; !isNaN(Number(s));\r\n};</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 9699,
+                    "user_id": 1371778,
+                    "accept_rate": 64
+                },
+                "down_vote_count": 1,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 42018658,
+                "question_id": 18082,
+                "body": "<pre><code>$('.rsval').bind('keypress', function(e){  \n        var asciiCodeOfNumbers = [48,46, 49, 50, 51, 52, 53, 54, 54, 55, 56, 57];\n        var keynum = (!window.event) ? e.which : e.keyCode; \n        var splitn = this.value.split(\".\"); \n        var decimal = splitn.length;\n        var precision = splitn[1]; \n        if(decimal == 2 &amp;&amp; precision.length &gt;= 2  ) { console.log(precision , 'e');   e.preventDefault(); } \n        if( keynum == 46 ){  \n            if(decimal &gt; 2) { e.preventDefault(); }  \n        } \n        if ($.inArray(keynum, asciiCodeOfNumbers) == -1)\n            e.preventDefault();    \n  });\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 3110,
+                    "user_id": 1076753,
+                    "accept_rate": 97
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 42419193,
+                "question_id": 18082,
+                "body": "<p>You can minimize this function in a lot of way, and you can also implement it with a custom regex for negative values or custom charts:</p>\n\n<pre><code>$('.number').on('input',function(){\n    var n=$(this).val().replace(/ /g,'').replace(/\\D/g,'');\n    if (!$.isNumeric(n))\n        $(this).val(n.slice(0, -1))\n    else\n        $(this).val(n)\n});\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 1096,
+                    "user_id": 1599462,
+                    "accept_rate": 86
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 47009183,
+                "question_id": 18082,
+                "body": "<p>No need to use extra lib.</p>\n\n<pre><code>const IsNumeric = (...numbers) =&gt; {\n  return numbers.reduce((pre, cur) =&gt; pre &amp;&amp; !!(cur === 0 || +cur), true);\n};\n</code></pre>\n\n<p>Test</p>\n\n<pre><code>&gt; IsNumeric(1)\ntrue\n&gt; IsNumeric(1,2,3)\ntrue\n&gt; IsNumeric(1,2,3,0)\ntrue\n&gt; IsNumeric(1,2,3,0,'')\nfalse\n&gt; IsNumeric(1,2,3,0,'2')\ntrue\n&gt; IsNumeric(1,2,3,0,'200')\ntrue\n&gt; IsNumeric(1,2,3,0,'-200')\ntrue\n&gt; IsNumeric(1,2,3,0,'-200','.32')\ntrue\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 3488,
+                    "user_id": 5953610
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 2,
+                "is_accepted": false,
+                "answer_id": 54382602,
+                "question_id": 18082,
+                "body": "<p>A simple and clean solution by leveraging language's dynamic type checking:</p>\n\n<pre class=\"lang-js prettyprint-override\"><code>function IsNumeric (string) {\n   if(string === ' '.repeat(string.length)){\n     return false\n   }\n   return string - 0 === string * 1\n}\n\n</code></pre>\n\n<p>if you don't care about white-spaces you can remove that \" if \" </p>\n\n<p>see test cases below</p>\n\n<p><div class=\"snippet\" data-lang=\"js\" data-hide=\"true\" data-console=\"true\" data-babel=\"false\">\r\n<div class=\"snippet-code snippet-currently-hidden\">\r\n<pre class=\"snippet-code-js lang-js prettyprint-override\"><code>function IsNumeric (string) {\r\n   if(string === ' '.repeat(string.length)){\r\n      return false\r\n   }\r\n   return string - 0 === string * 1\r\n}\r\n\r\n\r\nconsole.log('-1' + ' \u2192 ' + IsNumeric('-1'))    \r\nconsole.log('-1.5' + ' \u2192 ' + IsNumeric('-1.5')) \r\nconsole.log('0' + ' \u2192 ' + IsNumeric('0'))     \r\nconsole.log('0.42' + ' \u2192 ' + IsNumeric('0.42'))   \r\nconsole.log('.42' + ' \u2192 ' + IsNumeric('.42'))    \r\nconsole.log('99,999' + ' \u2192 ' + IsNumeric('99,999'))\r\nconsole.log('0x89f' + ' \u2192 ' + IsNumeric('0x89f'))  \r\nconsole.log('#abcdef' + ' \u2192 ' + IsNumeric('#abcdef'))\r\nconsole.log('1.2.3' + ' \u2192 ' + IsNumeric('1.2.3')) \r\nconsole.log('' + ' \u2192 ' + IsNumeric(''))    \r\nconsole.log('33 ' + ' \u2192 ' + IsNumeric('33 '))</code></pre>\r\n</div>\r\n</div>\r\n</p>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 9099,
+                    "user_id": 5405967,
+                    "accept_rate": 67
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 0,
+                "is_accepted": false,
+                "answer_id": 58091055,
+                "question_id": 18082,
+                "body": "<h1>Here's a <em>dead-simple</em> one (tested in Chrome, Firefox, and IE):</h1>\n\n<pre><code>function isNumeric(x) {\n  return parseFloat(x) == x;\n}\n</code></pre>\n\n<p>Test cases from question:</p>\n\n<pre><code>console.log('trues');\nconsole.log(isNumeric('-1'));\nconsole.log(isNumeric('-1.5'));\nconsole.log(isNumeric('0'));\nconsole.log(isNumeric('0.42'));\nconsole.log(isNumeric('.42'));\n\nconsole.log('falses');\nconsole.log(isNumeric('99,999'));\nconsole.log(isNumeric('0x89f'));\nconsole.log(isNumeric('#abcdef'));\nconsole.log(isNumeric('1.2.3'));\nconsole.log(isNumeric(''));\nconsole.log(isNumeric('blah'));\n</code></pre>\n\n<p>Some more test cases:</p>\n\n<pre><code>console.log('trues');\nconsole.log(isNumeric(0));\nconsole.log(isNumeric(-1));\nconsole.log(isNumeric(-500));\nconsole.log(isNumeric(15000));\nconsole.log(isNumeric(0.35));\nconsole.log(isNumeric(-10.35));\nconsole.log(isNumeric(2.534e25));\nconsole.log(isNumeric('2.534e25'));\nconsole.log(isNumeric('52334'));\nconsole.log(isNumeric('-234'));\nconsole.log(isNumeric(Infinity));\nconsole.log(isNumeric(-Infinity));\nconsole.log(isNumeric('Infinity'));\nconsole.log(isNumeric('-Infinity'));\n\nconsole.log('falses');\nconsole.log(isNumeric(NaN));\nconsole.log(isNumeric({}));\nconsole.log(isNumeric([]));\nconsole.log(isNumeric(''));\nconsole.log(isNumeric('one'));\nconsole.log(isNumeric(true));\nconsole.log(isNumeric(false));\nconsole.log(isNumeric());\nconsole.log(isNumeric(undefined));\nconsole.log(isNumeric(null));\nconsole.log(isNumeric('-234aa'));\n</code></pre>\n\n<p>Note that it considers infinity a number.</p>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 96498,
+            "user_id": 29,
+            "accept_rate": 83
+        },
+        "is_answered": true,
+        "down_vote_count": 5,
+        "up_vote_count": 2451,
+        "accepted_answer_id": 1830844,
+        "answer_count": 49,
+        "last_activity_date": 1584168844,
+        "question_id": 18082,
+        "title": "Validate decimal numbers in JavaScript - IsNumeric()",
+        "body": "<p>What's the cleanest, most effective way to validate decimal numbers in JavaScript?</p>\n\n<p>Bonus points for:</p>\n\n<ol>\n<li>Clarity. Solution should be clean and simple.</li>\n<li>Cross-platform.</li>\n</ol>\n\n<p>Test cases:</p>\n\n<pre><code>01. IsNumeric('-1')      =&gt; true\n02. IsNumeric('-1.5')    =&gt; true\n03. IsNumeric('0')       =&gt; true\n04. IsNumeric('0.42')    =&gt; true\n05. IsNumeric('.42')     =&gt; true\n06. IsNumeric('99,999')  =&gt; false\n07. IsNumeric('0x89f')   =&gt; false\n08. IsNumeric('#abcdef') =&gt; false\n09. IsNumeric('1.2.3')   =&gt; false\n10. IsNumeric('')        =&gt; false\n11. IsNumeric('blah')    =&gt; false\n</code></pre>\n"
+    },
+    {
+        "answers": [
+            {
+                "owner": {
+                    "reputation": 915,
+                    "user_id": 2999543
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 1,
+                "is_accepted": false,
+                "answer_id": 57892894,
+                "question_id": 57886661,
+                "body": "<p>I am not exactly sure why this is the case, but the dart compiler doesn't recognize the type T from the StateFullConsumerWidget as the same type T of the _StateFullConsumerWidgetState. If you pass the functions to the State everything works as expected. </p>\n\n<p>Resulting code:</p>\n\n<pre><code>class StateFullConsumerWidget&lt;T extends ChangeNotifier&gt; extends StatefulWidget{\n\n  StateFullConsumerWidget({@required this.builder,Key key,this.onPostViewModelInit,this.child}) : super(key : key);\n\n  final Widget Function(BuildContext context, T value, Widget child) builder;\n  final Widget child;\n\n  final Function(T viewModel) onPostViewModelInit;\n\n  @override\n  _StateFullConsumerWidgetState&lt;T&gt; createState() =&gt; _StateFullConsumerWidgetState&lt;T&gt;(onPostViewModelInit, builder);\n}\n\nclass _StateFullConsumerWidgetState&lt;T extends ChangeNotifier&gt; extends State&lt;StateFullConsumerWidget&gt;{\n  final Function(T viewModel) _onPostViewModelInit;\n  final Widget Function(BuildContext context, T value, Widget child) _builder;\n  T _viewModel;\n\n  _StateFullConsumerWidgetState(this._onPostViewModelInit, this._builder);\n\n  @override\n  void initState() {\n    // assign the model once when state is initialised\n    _viewModel = GetIt.instance.get&lt;T&gt;();\n    _onPostViewModelInit(_viewModel);\n    super.initState();\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return ChangeNotifierProvider&lt;T&gt;(\n      builder: (context) =&gt; _viewModel,\n      child: Consumer&lt;T&gt;(\n        builder: _builder,\n        child: widget.child,\n      ),\n    );\n  }\n}\n</code></pre>\n"
+            },
+            {
+                "owner": {
+                    "reputation": 14102,
+                    "user_id": 1255873,
+                    "accept_rate": 86
+                },
+                "down_vote_count": 0,
+                "up_vote_count": 18,
+                "is_accepted": true,
+                "answer_id": 57894770,
+                "question_id": 57886661,
+                "body": "<p>The way you are using the generic type <code>T</code> is incomplete. The relationship between the <code>StateFullConsumerWidget</code> and the <code>_StateFullConsumerWidgetState</code> classes as written in your code are such that <code>StateFullConsumerWidget</code> creates its state using the same <code>T</code> type parameter as itself, so the widget knows the state uses the same generic type that it does. From the perspective of <code>_StateFullConsumerWidgetState</code>, though, the class is declared as such:</p>\n\n<pre><code>class _StateFullConsumerWidgetState&lt;T extends ChangeNotifier&gt; \n    extends State&lt;StateFullConsumerWidget&gt;\n</code></pre>\n\n<p>The problem is the state class is using the general form of <code>StateFullConsumerWidget</code>, so there is no explicit relationship between the <code>T</code> that <code>_StateFullConsumerWidgetState</code> is receiving as the type parameter and the <code>T</code> that <code>StateFullConsumerWidget</code> is using. Dart doesn't know how to reconcile this ambiguous relationship, so it defaults to the lowest common denominator the type constraints allow, which is <code>ChangeNotifier</code>.</p>\n\n<p>Because of this, when you try to treat <code>T</code> as <code>OnBoardingViewModel</code>, Dart throws an error because, as far as the state class knows, the <code>T</code> of the parent widget is <code>ChangeNotifier</code>, not <code>OnBoardingViewModel</code>.</p>\n\n<p>You can fix this by passing the type parameter along when you declare your state class:</p>\n\n<pre><code>class _StateFullConsumerWidgetState&lt;T extends ChangeNotifier&gt; \n    extends State&lt;StateFullConsumerWidget&lt;T&gt;&gt;\n</code></pre>\n"
+            }
+        ],
+        "owner": {
+            "reputation": 788,
+            "user_id": 4610640,
+            "accept_rate": 44
+        },
+        "is_answered": true,
+        "down_vote_count": 0,
+        "up_vote_count": 8,
+        "accepted_answer_id": 57894770,
+        "answer_count": 2,
+        "last_activity_date": 1568227378,
+        "question_id": 57886661,
+        "title": "passing generic type by Function(T) in flutter",
+        "body": "<p>I'm trying to create a generic consumer widget that facilitates the ViewModel to its child. therefor I have two functions. one that has a function(T) after init of the ViewModel and the other for passing the model to its child Widget.</p>\n\n<p>in the generic class  is a child of ChangeNotifier and that works fine until I want to send the T value in the two Functions.</p>\n\n<p>then I get the following errors:</p>\n\n<blockquote>\n  <p>type '(OnBoardingViewModel) => Null' is not a subtype of type\n  '(ChangeNotifier) => void'</p>\n</blockquote>\n\n<p>and </p>\n\n<blockquote>\n  <p>type '(BuildContext, OnBoardingViewModel, Widget) => Scaffold' is not\n  a subtype of type\n  '(BuildContext, ChangeNotifier, Widget) => Widget'</p>\n</blockquote>\n\n<p>But when i change the extends type from ChangeNotifier to OnBoardingViewModel, everything works fine.</p>\n\n<p>can someone help me and or explain why this ain't working??</p>\n\n<pre><code>import 'package:flutter/material.dart';\nimport 'package:get_it/get_it.dart';\nimport 'package:provider/provider.dart';\n\nclass StateFullConsumerWidget&lt;T extends ChangeNotifier&gt; extends StatefulWidget{\n\n  StateFullConsumerWidget({@required this.builder,Key key,this.onPostViewModelInit,this.child}) : super(key : key);\n\n  final Widget Function(BuildContext context, ChangeNotifier value, Widget child) builder;\n  final Widget child;\n\n  final void Function(T) onPostViewModelInit;\n\n  @override\n  _StateFullConsumerWidgetState&lt;T&gt; createState() =&gt; _StateFullConsumerWidgetState&lt;T&gt;();\n}\n\nclass _StateFullConsumerWidgetState&lt;T extends ChangeNotifier&gt; extends State&lt;StateFullConsumerWidget&gt;{\n  T _viewModel;\n  @override\n  void initState() {\n    // assign the model once when state is initialised\n    _viewModel = GetIt.instance.get&lt;T&gt;();\n    widget.onPostViewModelInit(_viewModel);\n\n\n    super.initState();\n  }\n  @override\n  Widget build(BuildContext context) {\n    return ChangeNotifierProvider&lt;T&gt;(\n      builder: (context) =&gt; _viewModel,\n      child: Consumer&lt;T&gt;(\n        builder: widget.builder,\n        child: widget.child,\n      ),\n    );\n  }\n\n}\n</code></pre>\n\n<p>my widget</p>\n\n<pre><code>StateFullConsumerWidget&lt;OnBoardingViewModel&gt;(\n      onPostViewModelInit: (viewModel){\n        buildIntroList(viewModel);\n        viewModel.maxPages = _introWidgetsList.length;\n      },\n      builder: (context,viewModel,child) {\n        return Scaffold(\n          key: widget.scaffoldKey,\n          body: SafeArea(\n            child: Container(),\n            ),\n          ),\n        );\n      },\n    );\n</code></pre>\n\n<p>my ViewModel</p>\n\n<pre><code>import 'package:flutter/material.dart';\n\nclass OnBoardingViewModel extends ChangeNotifier{\n\n  OnBoardingViewModel(){\n\n  }\n}\n</code></pre>\n"
+    }
+]

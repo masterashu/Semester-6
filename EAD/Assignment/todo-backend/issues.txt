@@ -1,0 +1,5 @@
+1. Check null or existing in new todo
+2. Cannot update multiple todos
+3. No authentication/authorization
+4. Use REST with JSON data and seperate webapp
+5. Send Error response to user.

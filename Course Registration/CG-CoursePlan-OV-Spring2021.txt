@@ -1,0 +1,141 @@
+﻿Course Title: Cryptography (CSE XXX)
+--------------------------------------------
+A Program Elective Course (UG3 / UG4)
+By: Dr. Odelu Vanga
+
+Course Level   : xxxx            L-T-P-C: 3 - 1 - 0 : 4
+
+Course Websites: xxxx
+
+Prerequisite: Probability Theory and Algorithms.
+  
+
+1. Outline: With the rapid growth of digital communication and electronic 
+       data exchange, information security becomes a crucial problem in 
+       the industries, business, and administration. Data exchanged over 
+       the public networks (Internet) must be kept confidential and 
+       protected against manipulations. Electronic business requires
+       digital signatures that are valid in law, and secure payment-protocols. 
+       Coming to the 4th industrial technology revolution, digital assets 
+       become more valuable and people will look into blockchain more. 
+       Modern days cryptography is ubiquitous and plays a key role in 
+       providing solutions for data privacy and integrity. 
+
+
+2. Objectives: In this course, students will learn security issues of 
+      communications, classical cryptographic algorithms, symmetric-key 
+      cryptography, public-key cryptography, digital signatures, and the 
+      real-life applications. At the end of this course, students will 
+      know how to apply cryptographic techniques in the design and 
+      analysis of secure distributed systems.
+
+
+3. Course Outline (Topics): The following list of topics is tentative. 
+      Based on available time slots, some topics may be dropped or 
+      added or reordered.
+
+    - Number Theory Basics: Modular arithmetic, Primes, Euclidean Algorithm,               Chinese Remainder Theorem.
+
+    - Shannon’s Theory: Perfect Secrecy, Entropy, Security analysis of 
+             Classical ciphers.
+ 
+    - Symmetric Key Cryptography: DES, Finite Fields, AES, Security Analysis.
+
+    - Public Key Cryptography: RSA, ElGamal, Elliptic Curve Cryptography.
+
+    - Digital Signatures: Hash functions, Proof-of-Work, Merkle/Hash Tree, 
+              Digital Signature Algorithm, ElGamal Digital Signature.
+
+    - Blockchain: Introduction to Blockchain, Double Spending Problem (Fork), 
+              Bitcoin Transactions, Mining, Hash puzzle solving, 
+              Consensus (Byzantine Generals Problem and Practical BFT), 
+              Security Issues of Blockchain.
+
+ 
+
+4. Books:
+
+   Textbook:   
+
+    - "Cryptography and Network Security", Behrouz A Forouzan, Debdeep               Mukhopadhyay, McGraw-Hill Education, 2011.
+    - "Cryptography: Theory and Practice", Douglas Stinson, Chapman and        Hall/CRC, 3rd Edition, 2006.
+
+   Reference Books:
+
+    - "Cryptography and Network Security: Principles and Practice", William         Stallings, 6th Edition, Pearson Education, 2014.
+    - "A course in number theory and cryptography", Neal Koblitz, Second            Edition, Springer.
+    - "Handbook of Applied Cryptography", Alfred J. Menezes, Paul C. van
+       Oorschot, and Scott A. Vanstone, CRC Press.
+    - "Blockchain Technology Overview", D. Yaga, P. Mell, N. Roby, and 
+       K. Scarfone, NISTIR 8202.
+    - "Bitcoin: A peer-to-peer electronic cash system", Satoshi Nakamoto,
+       Manubot, 2019.
+    - Classroom Lecture Notes 
+
+
+5. Course Work: The term project should include explanatory/clear comments as       well as a short report describing the approach, detailed implementation
+      and analysis, and discussion/conclusion.
+
+        20%    Mid-Exam
+        30%    End-Exam
+        30%    Scheduled Quiz
+        10%    Class Participation Quiz
+        10%    Term Project
+
+
+6. Industry Impact: Cryptography is an essential component of cybersecurity.
+      The need to protect sensitive information and ensure the integrity of
+      industrial control processes has placed a premium on cybersecurity
+      skills in today’s information technology market. The global bersecurity
+      market is currently worth $173B in 2020, growing to $270B by 2026. By         2026, 77% of cybersecurity spending will be for externally managed
+      security services.  While money spent on in-house or internal
+      cybersecurity functions is expected to grow 7.2% each year to 2026,
+      global spending on external cybersecurity products and services is
+      projected to increase by 8.4% annually over the same period (Source:
+      Australian Cyber Security Growth Network - forbes)
+
+
+7. List of top companies have security solutions division: 
+     Cisco, IBM, Wipro, Semantec security, Microsoft, Satyam infoway
+     Govt: http://www.cdacindia.com/, http://www.ncst.ernet.in/ (C-DAC)
+
+     A more global list of companies working for security solutions is available in following link:
+     https://www.isical.ac.in/~malapati_r/indcrypt/companies.html
+
+8. Resources:
+
+
+   a) Cryptography (Computer Science 433) 
+       By Prof. Boaz Barak, Princeton University, USA.
+       Link: https://www.cs.princeton.edu/courses/archive/spr10/cos433/
+   b) Applied Cryptography and Network Security (TTM4135)
+       By Norwegian university of science and technology, 
+          Trondheim, Norway.
+       Link: https://www.ntnu.edu/studies/courses/TTM4135#tab=omEmnet
+   c) Applied Cryptography (18-733)
+       By Prof. Anupam Datta, Carnegie Mellon University, USA
+       Link: http://www.archive.ece.cmu.edu/~ece733/
+   d) Applied Cryptography (ECE/CS 498AC)
+       By Prof. Andrew Miller, University of Illinois, Urbana-Champaign, USA
+       Link: http://soc1024.ece.illinois.edu/teaching/ece498ac/fall2018/
+   e) Applied Cryptography (CAS CS 568)
+       By Prof. Varia, Boston University, USA.
+       Link: https://www.bu.edu/academics/cas/courses/cas-cs-568/
+   f) Applied Cryptography (CS6530)
+       By Dr. Chester Rebeiro, IIT Madras
+       Link: http://www.cse.iitm.ac.in/~chester/courses/17e_ac/index.html
+
+9. Course Ethics: Academic honesty and integrity are to be maintained by all 
+       the students. Any type of academic dishonesty is not acceptable        
+
+
+Course Plan Submitted By 
+Dr. Odelu Vanga
+Assistant Professor
+Indian Institute of Information Technology, Sri City
+Andhra Pradesh - 517646, India.
+
+e-mail: odelu.vanga@iiits.in
+Phone: +91 xxxxxxxxxx
+
+

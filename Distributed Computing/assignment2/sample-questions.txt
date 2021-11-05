@@ -1,0 +1,13 @@
+https://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric
+https://stackoverflow.com/questions/66914344/a-value-of-type-futureresponse-cant-be-assigned-to-a-variable-of-type-resp
+https://stackoverflow.com/questions/57886661/passing-generic-type-by-functiont-in-flutter
+https://stackoverflow.com/questions/66760221/get-the-row-that-have-more-than-one-value-per-column
+https://stackoverflow.com/questions/66760214/how-can-i-add-unlimited-field-in-models-on-admin-page
+https://stackoverflow.com/questions/66760212/how-to-perform-relative-imports-using-python
+https://stackoverflow.com/questions/66760203/how-can-i-install-discord-py-on-my-jailbroken-iphone
+https://stackoverflow.com/questions/66760150/how-to-solve-cannot-identify-image-file-in-keras
+https://stackoverflow.com/questions/66760131/trigger-event-when-receiving-a-brave-windows-notification
+https://stackoverflow.com/questions/66760128/generate-3d-cloud-points-using-multiple-2d-images
+https://stackoverflow.com/questions/66760088/sql-sub-query-and-joint
+https://stackoverflow.com/questions/66760070/python-paho-mqtt-global-variable-not-storing-message
+https://stackoverflow.com/questions/66760041/pyqt5-wait-until-data-is-written-to-qsharedmemory

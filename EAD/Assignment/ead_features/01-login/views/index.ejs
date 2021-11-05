@@ -1,0 +1,21 @@
+<%- include('partials/header') -%>
+
+    <h1 class="text-4xl">You are Logged In using Auth0</h1>
+    <h3>
+        <strong> From Ashutosh Chauhan (S20180010017)</strong>
+        <br />
+        Using Authentication as a service to reduce the
+        risk of security and authentication issues.
+        <br />
+        Handling authentication outside application allow us 
+        to write application in a much secure way preventing 
+        bugs and security threats
+    </h3>
+
+    <% if (locals.isAuthenticated) { %>
+        <p>You are logged in. <a href="/profile" class="underline">View your data</a>.</p>
+        <% } else { %>
+            <p>You are not logged in. <a href="/login" class="underline">Login</a>.</p>
+            <% } %>
+
+                <%- include('partials/footer') -%>

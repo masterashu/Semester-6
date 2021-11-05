@@ -1,0 +1,14 @@
+Light-Weight and Privacy-Preserving
+Authentication Protocol for Mobile
+Payments in the Context of IoT
+
+GROUP 7
+Ashutosh Chauhan    |   S20180010017
+Saumya Doogar       |   S20180010156
+
+Using Java Pairing based Cryptography library (JPBC) from http://gas.dia.unisa.it/projects/jpbc.
+
+RUNNING:
+
+Add library classes to classpath
+Compile and run Project using javac and java.
