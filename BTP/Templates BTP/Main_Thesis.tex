@@ -1,0 +1,428 @@
+\documentclass[a4paper,twoside,12pt]{report}
+\usepackage{afterpage}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{newlfont}
+%\usepackage[inner=1in, outer=1in, vmargin=2in]{geometry}
+%\usepackage{SIunits}
+\usepackage{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{enumitem}
+\pagestyle{fancy}
+\usepackage{tikz}
+\usepackage[numbers,sort&compress]{natbib}
+%\usepackage{cite}
+\usepackage{bm,latexsym,float,epsfig,subfigure,epstopdf,graphicx,array,algorithm,algpseudocode,makecell,mathtools}
+\usepackage{caption}
+\usepackage{seqsplit}
+\usepackage[acronym]{glossaries}
+\makenoidxglossaries
+\newacronym{ip}{IP}{internet protocol}
+\newacronym{vni}{VNI}{visual network index}
+\newacronym{vlc}{VLC}{visible light communication}
+\newacronym{cir}{CIR}{channel impulse response}
+\newacronym{lut}{LUT}{lookup table}
+\newacronym{led}{LED}{light emitting diode}
+\newacronym{mber}{MBER}{minimum bit error rate}
+\newacronym{mser}{MSER}{minimum symbol error rate}
+\newacronym{mmse}{MMSE}{minimum mean squared error}
+\newacronym{emse}{EMSE}{excess mean squared error}
+%\newacronym{rbf}{RBF}{radial basis function}
+\newacronym{rls}{RLS}{recursive least squares}
+\newacronym{nlms}{NLMS}{normalized least mean squares}
+\newacronym{lms}{LMS}{least mean squares}
+\newacronym{klms}{KLMS}{kernel least mean squares}
+\newacronym{kmser}{KMSER}{kernel minimum symbol error rate}
+\newacronym{cklms}{CKLMS}{complex kernel least mean squares}
+\newacronym{fir}{FIR}{finite impulse response}
+\newacronym{iid}{i.i.d}{independently identically distributed}
+\newacronym{awgn}{AWGN}{additive white Gaussian noise}
+\newacronym{namber}{NAMBER}{normalized-adaptive MBER}
+\newacronym{ser}{SER}{symbol error rate}
+\newacronym{ber}{BER}{bit error rate}
+\newacronym{snr}{SNR}{signal to noise ratio}
+\newacronym{qpsk}{QPSK}{quadrature phase shift keying}
+\newacronym{qam}{QAM}{quadrature amplitude modulation}
+\newacronym{pam}{PAM}{pulse amplitude modulation}
+\newacronym{ncklms1}{NCKLMS1}{normalized CKLMS1}
+\newacronym{ncklms2}{NCKLMS2}{normalized CKLMS2}
+\newacronym{isi}{ISI}{inter-symbol interference}
+\newacronym{pdf}{p.d.f}{probability density function}
+\newacronym{papr}{PAPR}{peak to average power ratio}
+\newacronym{dfe}{DFE}{decision feedback equalizer}
+\newacronym{rkhs}{RKHS}{reproducing kernel Hilbert space}
+\newacronym{mse}{MSE}{mean squared error}
+\newacronym{qkmser}{QKMSER}{quantized kernel MSER}
+\newacronym{fbqkmser}{FBQKMSER}{fixed budget quantized kernel MSER}
+\newacronym{fec}{FEC}{forward error correction}
+\newacronym{cmma}{CMMA}{cascaded-MMA}
+\newacronym{mcmma}{MCMMA}{modified cascaded-MMA}
+\newacronym{cma}{CMA}{constant-modulus algorithm}
+\newacronym{mma}{MMA}{multi-modulus algorithm}
+\newacronym{imsc}{IMSC}{improved multi-stage clustering}
+\newacronym{himsc}{HIMSC}{Hammerstein improved multi-stage clustering equalizer }
+\newacronym{rf}{RF}{radio frequency}
+\newacronym{iot}{IoT}{internet of things}
+\newacronym{noma}{NOMA}{non-orthogonal multiple access}
+\newacronym{sic}{SIC}{successive interference canceller}
+\newacronym{ue}{UE}{user equipment}
+\newacronym{los}{LOS}{line of sight}
+\newacronym{fov}{FOV}{field of view}
+\newacronym{mrc}{MRC}{maximal ratio combining}
+\newacronym{qos}{QoS}{quality of service}
+\newacronym{mimo}{MIMO}{multiple-input multiple-output}
+\newacronym{miso}{MISO}{multiple-input single-output}
+\newacronym{svd}{SVD}{singular value decomposition}
+\newacronym{csi}{CSI}{channel state information}
+\newacronym{plc}{PLC}{power-line communication}
+%\newacronym{qr}{QR}{channel state information}
+\newacronym{sinr}{SINR}{signal to interference and noise ratio}
+\newacronym{pd}{PD}{photo-diode}
+\newacronym{siso}{SISO}{single-input single-output}
+\DeclareMathOperator{\sign}{sign}
+\newtheorem{thm}{Theorem}[section]
+\renewcommand{\thethm}{{\arabic{section}.\arabic{thm}}}
+
+\RequirePackage[english=usenglishmax]{hyphsubst}
+\usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+\usepackage{latexsym,acronym}
+
+%\usepackage{subcaption}
+%\usepackage{tikz}
+\usepackage{setspace}
+\doublespacing
+\usetikzlibrary{positioning,shapes,arrows,fit,calc,chains}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+
+\newcommand{\symbolA}{
+%\tikz \draw[red] (0,0)--(0,0.2)--(0.2,0.2)--(0.2,0.4)--(0.4,0.4);
+}
+
+\newcommand{\symbolB}{
+%\tikz[y={(0,-1)}] \draw[blue] (0,0)--(0,0.2)--(0.2,0.2)--(0.2,0.4)--(0.4,0.4);
+}
+
+\newcommand{\symbolC}{
+\begin{tikzpicture}
+\draw[fill=green] (0,0) circle (0.2cm);
+\end{tikzpicture}
+}
+\usepackage{afterpage}
+\renewcommand{\bibname}{References}
+\rhead{}
+%\usepackage[center]{titlesec}
+\usepackage{titlesec}
+
+
+\usepackage[top=1in, bottom=1in, outer=2.0cm, inner=4.0cm,headsep=1.0cm,footskip=1.0cm]{geometry}
+\tikzstyle{block} = [draw, fill=blue!20, rectangle,
+    minimum height=2.5em, minimum width=2.5em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\tikzstyle{block} = [draw, fill=blue!20, rectangle,
+    minimum height=2.5em, minimum width=2.5em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+\usetikzlibrary{positioning,shapes,arrows}
+
+
+
+%\bibliographystyle{model5-names}
+\bibliographystyle{IEEEtran}
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+\Large \textbf{TITLE OF THE REPORT}\\
+\vspace{2cm}
+ \textbf{{A BTP Report}}\\
+  \vspace{2cm}
+by\\
+%\vspace{0.7cm}
+\textbf{Names}\\
+\textbf{\small Roll Nos.:}\\
+\vspace{3cm}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.27\textwidth]{IIITS.png}
+	\label{fig:IITI}
+\end{figure}
+%\vspace{1.5cm}
+%\large \textbf{DISCIPLINE OF ELECTRICAL ENGINEERING}\\ % \small
+%\vspace{0.1cm}
+\Large \textbf{INDIAN INSTITUTE OF INFORMATION TECHNOLOGY SRICITY}\\
+%\vspace{0.1cm}
+ \small \textbf{DATE}\\
+  \small \textbf{1st Semester Report}\\
+\end{center}
+\end{titlepage}
+%%%%%empty page%%%
+\newpage
+\mbox{}
+\thispagestyle{empty}
+%%%%%%%%%%%
+%\begin{titlepage}
+%\begin{center}
+%
+%\Large \textbf{Title of the report}\\
+%\vspace{1cm}
+% \textbf{\Large{A BTP report}}\\
+%%\vspace{0.5cm}
+%\textit{\small{Submitted in partial fulfillment of the }}\\
+%%\vspace{0.1cm}
+%\textit{\small{requirements for the award of the degree}}\\
+%%\vspace{0.1cm}
+%\textit{\small{\bf \textit{of}}}\\
+%%\vspace{0.3cm}
+%\Large \textbf{Bachelor of Technology}\\
+%\vspace{1cm}
+%\textit{by}\\
+%%\vspace{0.5cm}
+%\textbf{XYZ}\\
+%\vspace{1cm}
+%\begin{figure}[htbp]
+%	\centering
+%		\includegraphics[width=0.27\textwidth]{IIITS.png}
+%	\label{fig:IITI}
+%\end{figure}
+%%\vspace{1cm}
+%%\large \textbf{DISCIPLINE OF ELECTRICAL ENGINEERING}\\
+%%\vspace{0.1cm}
+% \Large \textbf{INDIAN INSTITUTE OF INFORMATION TECHNOLOGY SRICITY}\\
+%%\vspace{0.1cm}
+% \small \textbf{MONTH YEAR}\\
+%\end{center}
+%\end{titlepage}
+\newpage
+\mbox{}
+\thispagestyle{empty}
+\newpage  \thispagestyle{empty}
+\begin{minipage}[t]{1\linewidth}
+      %\begin{center}
+  \scalebox{0.15}{
+    \includegraphics[width=1\textwidth]{IIITS.png}}
+  %\end{center}
+   \end{minipage}%
+   \hfill
+   \begin{minipage}[t]{1.06\linewidth}
+     \centering
+     \vspace{-12.5ex}
+        \baselineskip 1.4\baselineskip
+              {\hspace{12ex} \normalsize \textbf{INDIAN INSTITUTE OF INFORMATION TECHNOLOGY SRICITY}}\\
+              \vspace{1cm}
+              {\hspace{6ex} \normalsize \textbf{CANDIDATE'S DECLARATION}}\\
+   \end{minipage}
+%\vspace{0.2cm}
+
+I hereby certify that the work which is being presented in the BTP entitled \newline``{\textbf{TITLE}}" in the partial fulfillment of the requirements for the award of the degree of B. Tech and submitted in the Indian Institute of Information Technology SriCity, is an authentic record of my own work carried out during the time period from January 2021 to May 2021 under the supervision of Prof. XYZ, Indian Institute of Information Technology SriCity, India.\\
+The matter presented in this report has not been submitted by me for the award of any other degree of this or any other institute.\newline
+%\vspace*{1.5cm}
+\hspace*{9.3cm}                         {\footnotesize Signature of the student with date}\newline
+\hspace*{10cm}                                                    \textbf{(STUDENT NAME)}\newline
+$-------------------------------------$
+%\vspace{2ex}
+\newline
+This is to certify that the above statement made by the candidate is correct to the best of my knowledge.\newline
+%\vspace*{1.5cm}
+\hspace*{8.2cm}                                                     {\footnotesize Signature of BTP Supervisor with date}\\
+\hspace*{10cm}                                                   \textbf{(Prof. XYZ)}\newline
+%$-------------------------------------$\\
+%\begin{small} XYZ has successfully completed his BTP Examination held on
+%%\vspace{-1.5ex}
+%%\vspace{0.5cm}
+%\vspace{3ex}\\
+%{\footnotesize Signature of BTP Advisor}  \hspace{7.3cm}           {\footnotesize BTP  Coordinator}\\
+%Date:		                    \hspace{11cm}		        Date:\vspace{0.55cm}\newline
+%%\vspace{2cm}
+%%\vspace{0.5cm}
+%{\footnotesize Signature of BTP Panel Member:1} ~~~ {\footnotesize  Signature of BTP Panel Member:2} ~~~ {\footnotesize Signature of External Examiner }\newline
+%Date: 	\hspace{3.8cm}				Date:		\hspace{3.9cm}			 Date:\newline
+%\end{small}
+%\vspace{-0.3cm}
+%$--------------------------------------$
+
+%%%%%%%%blankpage
+
+\newpage \thispagestyle{empty}
+
+\begin{center}
+{\large \bf ABSTRACT}
+\end{center}
+\newpage
+
+\tableofcontents
+
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+                            \newpage\addcontentsline{toc}{chapter}{INTRODUCTION}
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            \newpage\addcontentsline{toc}{chapter}{LITERATURE SURVEY}
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            \newpage\addcontentsline{toc}{chapter}{METHODOLOGY}
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            \newpage\addcontentsline{toc}{chapter}{RESULTS}
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            \newpage\addcontentsline{toc}{chapter}{CONCLUSION}
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+\newpage\addcontentsline{toc}{chapter}{LIST OF FIGURES}\listoffigures
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+\newpage\addcontentsline{toc}{chapter}{LIST OF TABLES}\listoftables
+                            %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+\newpage\addcontentsline{toc}{chapter}{LIST OF ABBREVIATIONS}
+                             %%%%%%%%blankpage
+                            \newpage \mbox{}\thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+%\chapter*{List of Abbreviations and Symbols}
+\glsaddall
+%\printnoidxglossaries
+\printnoidxglossary[type=\acronymtype,title={List of Abbreviations and Symbols},nonumberlist]
+%\begin{tabular}{l l}
+%AASM:& American Academy of Sleep Medicine \\
+%$ACC$:& Accuracy  \\
+%ANN: &Artificial Neural Network \\
+%\end{tabular}
+%%%-----------------------------------------------------------
+
+\newpage
+\mbox{}
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%55
+\newpage \thispagestyle{empty}
+
+\begin{center}
+{\large \bf ACKNOWLEDGEMENTS}
+\end{center}
+%I am immensely grateful to my PhD supervisor Dr. Vimal Bhatia for his invaluable guidance, encouragement and direction throughout this work. He has actively supported my research and has done everything humanly possible to support my research in IIT indore. He has helped me in transforming myself into a better researcher, paper-writer and presenter. Further, I will be forever thankful to him for hiring me for a PhD position after my return from Turkey. I would also take this opportunity to thank my PSPC members Dr. Somnath Dey and Dr. Shaibal Mukherjee who have mentored my PhD thesis via interactions in yearly research progress seminars. Their suggestions and insights were really helpful in shaping my thesis and in forging directions of future work. Further, interactions with Dr. Murat Uysal and Mr. Farshad Miramirkhani acquainted me with the latest research in VLC and were quite useful in shaping my thesis towards something substantial. 
+
+%I would thank Ministry of Human Resource Development (MHRD), Govt. of India and IIT Indore for providing stipend regularly and marginally hiking it when we were struggling economically. I would also take this opportunity to thank IIT Indore for partially funding my conference travels. These conferences helped me meet new people who have helped shape my PhD thesis. I will also thank the finance, administration, academic and R\&D sections for all the support. The support from hostels, transport and mess has helped ease the research pressure significantly. 
+
+%Working with him ultimately resulted into a great deal of enjoyment in my dissertation research.
+
+
+\vspace{2.5cm}
+\hspace*{10.8cm} 
+ %  \thispagestyle{empty}
+   \vspace*{3.75in}
+
+
+
+%%%%%%%%blankpage
+\newpage
+\mbox{}
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%
+\clearpage
+\newpage
+\pagenumbering{roman}
+\include{myabstract}
+\clearpage
+
+%%%%%%%%blankpage
+\newpage
+\mbox{}
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%
+\newpage
+
+
+
+\begin{spacing}{1.5}
+\doublespacing
+                            %%%%%%%% double blankpage
+                            \newpage \mbox{} \thispagestyle{empty} \newpage \mbox{} \thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+%\renewcommand{\headrulewidth}{0pt}
+\clearpage
+\pagenumbering{arabic}
+\include{chap1N}
+\thispagestyle{empty}
+%\input{IEEEtran_PTL/bare_jrnl.tex}
+                            %%%%%%%%blankpage
+                            \newpage \mbox{} \thispagestyle{empty} \newpage \mbox{} %\thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+%\thispagestyle{empty}
+%\input{IEEEphot_1_revised/IEEEphot_sample.tex}
+                            %%%%%%%%blankpage
+%                            \newpage \mbox{} \thispagestyle{empty} \newpage \mbox{} %\thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+%\input{SIVP_revised/template.tex}
+%\thispagestyle{empty}
+%\input{IEEEphot_1_revised_FINAL_BLIND_SEE_THIS/IEEEphot_sample1.tex}
+%\thispagestyle{empty}
+%\input{IEEEtran_NOMA_revised/bare_jrnl.tex}
+%\thispagestyle{empty}
+%\include{my_conclusion}
+                            %%%%%%%%blankpage
+%                            \newpage \mbox{} \thispagestyle{empty}
+                            %%%%%%%%%%%%%%%
+\thispagestyle{empty}
+%\input{ref}
+
+\clearpage
+\newpage
+\thispagestyle{empty}
+%\begin{center}
+% \addcontentsline{toc}{chapter}{\small \bf LIST OF PUBLICATIONS}
+%\end{center}
+%{\Large \bf List of publications}\\
+%{\bf Publications from thesis}\\
+%\indent\textbf{Journal papers:}
+%\begin{enumerate}
+%\item R. Mitra, and V. Bhatia, ``Improved multi-stage clustering-based blind equalisation in interference-limited CDMA environments," Electronics Letters, vol. 50, no. 14, pp. 1027-1029, 2014.
+%\item R. Mitra, and V. Bhatia, ``Chebyshev Polynomial-Based Adaptive Predistorter for Nonlinear LED Compensation in VLC," IEEE Photonics Technology Letters, vol. 28, no. 10, pp. 1053-1056, 2016.
+%\item R. Mitra, and V. Bhatia, ``Adaptive Sparse Dictionary-Based Kernel Minimum Symbol Error Rate Post-Distortion for Nonlinear LEDs in Visible Light Communications," IEEE Photonics Journal, vol. 8, no. 4, pp. 1-13, 2016.
+%\item R. Mitra, and V. Bhatia, ``Finite Dictionary Techniques for MSER Equalization in RKHS," Signal Image Video Processing (SIVP), Springer, 2016 (Accepted).
+%\item R. Mitra, and V. Bhatia, ``Unsupervised Multi-Stage Clustering based Hammerstein post-distortion for VLC," IEEE Photonics Journal, vol. 9, no. 1, pp. 1-10, 2017.
+%\end{enumerate}
+%\indent\indent\textbf{Conference papers:}
+%\begin{enumerate}
+%\item R. Mitra, and V. Bhatia, ``Improved Multi-stage Clustering Based Blind Equalisation in Distributed Environments," Information Technology (ICIT), 2014 International Conference on. IEEE, India, 2014.
+%\item R. Mitra, and V. Bhatia, ``The diffusion-KLMS algorithm," Information Technology (ICIT), 2014 International Conference on. IEEE, India, 2014.
+%\item R. Mitra, and V. Bhatia, ``A kernel based technique for MSER equalisation for non-linear channels," Signal Processing Conference (EUSIPCO), 2015 23rd European. IEEE, France, 2015.
+%\item R. Mitra, and V. Bhatia, ``Normalised multi-stage clustering equaliser for underwater acoustic channels," Sensor Signal Processing for Defence (SSPD), 2015. IEEE, UK, 2015.
+%\item R. Mitra, N. Kumar, and V. Bhatia, ``Blind MBER based selection diversity combining in amplify and forward relay protocol in Rayleigh fading environments," Signal Processing and Communication (ICSC), 2015 International Conference on. IEEE, India, 2015.
+%\item R. Mitra, N. Kumar, and V. Bhatia, ``A hybrid MBER-IMSC based blind equalisation scheme in amplify and forward relay protocol in Rayleigh fading environments," 2015 IEEE Bombay Section Symposium (IBSS). IEEE, India, 2015. 
+%\end{enumerate}
+%Book Chapter:
+%\begin{enumerate}
+%  \item R.B. Pachori, R. Sharma, and S. Patidar, Classification of normal and epileptic seizure EEG signals based on empirical mode decomposition, In: Q. Zhu and A.T. Azar (Eds.) Complex System Modelling and Control through Intelligent Soft Computations, Studies in Fuzziness and Soft Computing, Springer International Publishing, Switzerland, 2015.
+%\end{enumerate}
+%{\bf Publications apart from thesis}\\
+%Journal papers:
+%\begin{enumerate}
+%\item Mitra, R., and V. Bhatia. "Improved multi-stage clustering-based blind equalisation in interference-limited CDMA environments." Electronics Letters 50.14 (2014): 1027-1029.
+%\end{enumerate}
+\end{spacing}
+\end{document}
+
+% \include{FNF_EMD_Chap}
+%\thispagestyle{empty}
+%\include{FNF_Bivariate}
+%\thispagestyle{empty} 
