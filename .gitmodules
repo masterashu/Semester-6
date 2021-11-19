@@ -1,0 +1,6 @@
+[submodule "EAD/Project/server"]
+	path = EAD/Project/server
+	url = https://github.com/SOAD-Group-36/ead_server
+[submodule "EAD/Project/frontend"]
+	path = EAD/Project/frontend
+	url = https://github.com/SOAD-Group-36/frontend
